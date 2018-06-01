@@ -1,0 +1,1 @@
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.UWP\XFAppToDoList.UWP.csproj;x86

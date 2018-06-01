@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFAppToDoList", "XFAppToDoList\XFAppToDoList\XFAppToDoList.csproj", "{B05BBAC7-3061-4C19-B5BA-5BA9A232B87B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XFAppToDoList", "XFAppToDoList\XFAppToDoList\XFAppToDoList.csproj", "{B05BBAC7-3061-4C19-B5BA-5BA9A232B87B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFAppToDoList.Android", "XFAppToDoList\XFAppToDoList.Android\XFAppToDoList.Android.csproj", "{B13496B2-2D98-414B-B661-3716CBD20EA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFAppToDoList.iOS", "XFAppToDoList\XFAppToDoList.iOS\XFAppToDoList.iOS.csproj", "{60F14B4E-280F-42EB-8DDC-530AF999236B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFAppToDoList.UWP", "XFAppToDoList\XFAppToDoList.UWP\XFAppToDoList.UWP.csproj", "{E62B6543-38F6-4542-9928-FC46B1B205F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFAppToDoList.Wpf", "XFAppToDoList\XFAppToDoList.Wpf\XFAppToDoList.Wpf.csproj", "{F189C206-7F9D-442B-8335-2EC044191D4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -251,6 +253,54 @@ Global
 		{E62B6543-38F6-4542-9928-FC46B1B205F6}.Release|x86.ActiveCfg = Release|x86
 		{E62B6543-38F6-4542-9928-FC46B1B205F6}.Release|x86.Build.0 = Release|x86
 		{E62B6543-38F6-4542-9928-FC46B1B205F6}.Release|x86.Deploy.0 = Release|x86
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|ARM.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|x64.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|x64.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Ad-Hoc|x86.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|ARM.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|x64.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.AppStore|x86.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|ARM.Build.0 = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|x64.Build.0 = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Debug|x86.Build.0 = Debug|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|ARM.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|iPhone.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|x64.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|x64.Build.0 = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|x86.ActiveCfg = Release|Any CPU
+		{F189C206-7F9D-442B-8335-2EC044191D4F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -259,7 +309,7 @@ Global
 		SolutionGuid = {670E8746-981D-4E5E-B7B8-F76226E6F7B8}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 6
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://ngotrung.visualstudio.com/
 		SccLocalPath0 = .
@@ -275,5 +325,8 @@ Global
 		SccProjectUniqueName4 = XFAppToDoList\\XFAppToDoList\\XFAppToDoList.csproj
 		SccProjectName4 = XFAppToDoList/XFAppToDoList
 		SccLocalPath4 = XFAppToDoList\\XFAppToDoList
+		SccProjectUniqueName5 = XFAppToDoList\\XFAppToDoList.Wpf\\XFAppToDoList.Wpf.csproj
+		SccProjectName5 = XFAppToDoList/XFAppToDoList.Wpf
+		SccLocalPath5 = XFAppToDoList\\XFAppToDoList.Wpf
 	EndGlobalSection
 EndGlobal

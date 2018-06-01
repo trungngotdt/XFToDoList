@@ -2,14 +2,82 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFAppToDoList.Views.MainPage"
-             Title="{Binding Title}">
+             xmlns:i="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             Title="{Binding GetTitle}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="To Do List" />
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Button Text="A"/>
-            <Button Text="A"/>
+    <AbsoluteLayout>
+        <StackLayout BackgroundColor="Red"
+                     AbsoluteLayout.LayoutBounds="0,0,1,0.1"
+                     AbsoluteLayout.LayoutFlags="HeightProportional,WidthProportional"/>
+         <StackLayout BackgroundColor="Wheat"
+                     Orientation="Horizontal" 
+                     AbsoluteLayout.LayoutBounds="1,1,1,0.1"
+                     AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
+            <Button x:Name="BtnAdd"
+                    Text="Add" 
+                    HorizontalOptions="CenterAndExpand"/>
+            <Button x:Name="BtnDelete"
+                    Text="Delete"
+                    HorizontalOptions="CenterAndExpand"/>
+            <Button x:Name="BtnAbout"
+                    Text="About"
+                    Command="{Binding CommandPopUp}"
+                    
+                    HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
-    </StackLayout>
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
+                    AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
+            <ListView x:Name="LsvToDo" 
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding ListToDo}" >
+                <ListView.Behaviors>
+                    <i:EventToCommandBehavior EventName="ItemTapped"
+                                              Command="{Binding CommandPressed}"
+                                              CommandParameter="{x:Reference LsvToDo}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>                           
+                            <StackLayout Orientation="Horizontal" >
+                                <Label Text="{Binding Title}"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Detail}"
+                                       IsVisible="False"                                       
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Date}"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="Status :"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Switch VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsToggled="{Binding Available}"/>
+                               
+                                <!--
+                                 <Button VerticalOptions="EndAndExpand" 
+                                        Opacity="1"
+                                        BindingContext="{Binding Source={x:Reference LsvToDo},Path=BindingContext}"
+                                        HorizontalOptions="EndAndExpand" 
+                                        Rotation="-90"
+                                        Command="{Binding CommandPressed}"
+                                        CommandParameter="{Binding }"
+                                        Text="..."/>
+                                -->
+                               
+                                   
+                          
 
+                            </StackLayout>
+                            
+                        </ViewCell>
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+       
+    </AbsoluteLayout>
 </ContentPage>
