@@ -22,7 +22,7 @@
             <Button x:Name="BtnAbout"
                     Text="About"
                     Command="{Binding CommandPopUp}"
-                    
+                    CommandParameter="{x:Reference LsvToDo}"
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
         <ScrollView AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
@@ -33,11 +33,12 @@
                 <ListView.Behaviors>
                     <i:EventToCommandBehavior EventName="ItemTapped"
                                               Command="{Binding CommandPressed}"
-                                              CommandParameter="{x:Reference LsvToDo}"/>
+                                              CommandParameter="{ x:Reference LsvToDo} "/>
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>                           
+                        <ViewCell >
+                            
                             <StackLayout Orientation="Horizontal" >
                                 <Label Text="{Binding Title}"
                                        HorizontalOptions="CenterAndExpand"

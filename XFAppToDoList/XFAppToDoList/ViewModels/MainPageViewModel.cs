@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -19,32 +20,36 @@ namespace XFAppToDoList.ViewModels
         private IPageDialogService getPageDialogService;
         private string title;
         private DelegateCommand<object> commandPressed;
-        private DelegateCommand popUp;
-        public DelegateCommand CommandPopUp =>
-            popUp ?? (popUp = new DelegateCommand(async ()=> { await ExecuteCommandPopUpAsync(); }));
+        private DelegateCommand<ListView> popUp;
+        public DelegateCommand<ListView> CommandPopUp =>
+            popUp ?? (popUp = new DelegateCommand<ListView>(async (l) => { await ExecuteCommandPopUpAsync(l); }));
 
-        async Task ExecuteCommandPopUpAsync()
+        async Task ExecuteCommandPopUpAsync(ListView listView)
         {
+            var p = new NavigationParameters
+            {
+                { "SelectedItem", listView.SelectedItem }
+            };
+
             //var result=await Application.Current.MainPage.DisplayActionSheet("A", "a", "a", new string[] { "l" });
-            
-            ActionSheetButton.CreateButton("", () => { });
+            await NavigationService.NavigateAsync("AboutPage", p);
+            /*ActionSheetButton.CreateButton("", () => { });
             IActionSheetButton option1Action = ActionSheetButton.CreateButton("Option 1", () => { Debug.WriteLine("Option 1"); });
             IActionSheetButton option2Action = ActionSheetButton.CreateButton("Option 2", new DelegateCommand(() => { Debug.WriteLine("Option 2"); }));
             IActionSheetButton cancelAction = ActionSheetButton.CreateCancelButton("Cancel", new DelegateCommand(() => { Debug.WriteLine("Cancel"); }));
-            IActionSheetButton destroyAction = ActionSheetButton.CreateDestroyButton("Destroy", new DelegateCommand(() => { Debug.WriteLine("Destroy"); }));
-
-            await GetPageDialogService.DisplayActionSheetAsync("ActionSheet with ActionSheetButtons", option1Action, option2Action, cancelAction, destroyAction);
-            
+            */
+            //var result= await GetPageDialogService.DisplayActionSheetAsync("Choose","Cancel",null,new string[] { "Option1" });
+            //listToDo.RemoveAt(10);
             // Debug.WriteLine("Action: " + action);
         }
         private ObservableCollection<Jobs> listToDo;
 
-        public MainPageViewModel(INavigationService navigationService,IPageDialogService pageDialogService) 
-            : base (navigationService)
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
+            : base(navigationService)
         {
             getPageDialogService = pageDialogService;
             GetTitle = "Main Page";
-            ListToDo.Add(new Jobs("Job a","Job", true, DateTime.Now));
+            ListToDo.Add(new Jobs("Job a", "Job", true, DateTime.Now));
             ListToDo.Add(new Jobs("Job b", "Job", true, DateTime.Now));
             ListToDo.Add(new Jobs("Job c", "Job", true, DateTime.Now));
             ListToDo.Add(new Jobs("Job d", "Job", true, DateTime.Now));
@@ -62,7 +67,7 @@ namespace XFAppToDoList.ViewModels
         {
             get
             {
-                if (listToDo==null)
+                if (listToDo == null)
                 {
                     listToDo = new ObservableCollection<Jobs>();
                 }
@@ -71,10 +76,7 @@ namespace XFAppToDoList.ViewModels
             set => listToDo = value;
         }
         public DelegateCommand<object> CommandPressed =>
-            commandPressed ?? (commandPressed = new DelegateCommand<object>(async(o) =>
-            await ExecuteCommandPressedAsync(o)
-            
-            ));
+            commandPressed ?? (commandPressed = new DelegateCommand<object>(async (o) => await ExecuteCommandPressedAsync(o)));
 
         public string GetTitle { get => title; set => title = value; }
         public IPageDialogService GetPageDialogService { get => getPageDialogService; set => getPageDialogService = value; }
@@ -83,18 +85,24 @@ namespace XFAppToDoList.ViewModels
         {
             try
             {
-                //var action = await DisplayActionSheet("ActionSheet: SavePhoto?", "Cancel", "Delete", "Photo Roll", "Email");
-                //Debug.WriteLine("Action: " + action);
-                var LsvToDo = element as ListView;
-                var selectItem = LsvToDo.SelectedItem;
+                var p = new NavigationParameters
+                {
+                    { "SelectedItem", (element as ListView).SelectedItem }
+                };
+                await NavigationService.NavigateAsync("DetailPage", p);
             }
             catch (Exception ex)
             {
 
-                throw ex;
+                Debug.WriteLine(ex);
             }
-            
 
+
+        }
+
+        public override void OnNavigatingTo(NavigationParameters parameters)
+        {
+            //NavigationService.NavigateAsync("file", parameters);
         }
     }
 }

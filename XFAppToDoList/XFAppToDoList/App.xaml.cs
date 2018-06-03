@@ -32,6 +32,7 @@ namespace XFAppToDoList
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<AboutPage>();
+            containerRegistry.RegisterForNavigation<DetailPage>();
         }
     }
 }
