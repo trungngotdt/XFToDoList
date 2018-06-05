@@ -21,7 +21,7 @@
                     HorizontalOptions="CenterAndExpand"/>
             <Button x:Name="BtnAbout"
                     Text="About"
-                    Command="{Binding CommandPopUp}"
+                    Command="{Binding CommandClickBtnAbout}"
                     CommandParameter="{x:Reference LsvToDo}"
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>

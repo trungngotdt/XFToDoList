@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="XFAppToDoList.Views.DetailPage">
+             x:Class="XFAppToDoList.Views.DetailPage"
+             xmlns:i="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             Title="{Binding Title}">
 
-    <StackLayout BackgroundColor="Red"
+    <StackLayout x:Name="StaLayMain"
+                 BackgroundColor="Red" 
                  Orientation="Vertical">
         <Entry x:Name="EntTitle"
                Text="{Binding TitleJobs}"/>
@@ -21,12 +24,19 @@
                      BackgroundColor="Black"
                      Orientation="Horizontal">
             <Button x:Name="BtnOk"
-                Text="Ok"
-                HorizontalOptions="CenterAndExpand"/>
-        <Button x:Name="BtnCancel"
-                Text="Cancel"
-                HorizontalOptions="CenterAndExpand"/>
+                    Text="Ok" 
+                    HorizontalOptions="CenterAndExpand">
+                <Button.Behaviors>
+                    <i:EventToCommandBehavior EventName="Clicked"
+                                              Command="{Binding CommandClickOk}"
+                                              CommandParameter="{x:Reference StaLayMain}">
+                    </i:EventToCommandBehavior>
+                </Button.Behaviors>
+            </Button>
+            <Button x:Name="BtnCancel"
+                    Text="Cancel"
+                    HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
-        
+
     </StackLayout>
 </ContentPage>

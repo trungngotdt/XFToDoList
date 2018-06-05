@@ -28,6 +28,17 @@ namespace XFAppToDoList.Models
             this.Date = date;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is Jobs)
+            {
+                var guest = obj as Jobs;
+                return this.Title.Equals(guest.Title) && this.Detail.Trim().Equals(guest.Detail.Trim())
+                    && this.Available.Equals(guest.Available) && this.Date.Equals(guest.Date);
+            }
+            return false;
+        }
+
         public override string ToString()
         {
             return "Title : "+this.Title+ "Detail : "+this.Detail+"Status : "+this.Available+"Time : "+this.Date.ToString();

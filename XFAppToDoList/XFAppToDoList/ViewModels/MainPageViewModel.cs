@@ -20,9 +20,9 @@ namespace XFAppToDoList.ViewModels
         private IPageDialogService getPageDialogService;
         private string title;
         private DelegateCommand<object> commandPressed;
-        private DelegateCommand<ListView> popUp;
-        public DelegateCommand<ListView> CommandPopUp =>
-            popUp ?? (popUp = new DelegateCommand<ListView>(async (l) => { await ExecuteCommandPopUpAsync(l); }));
+        private DelegateCommand<ListView> commandClickBtnAbout;
+        public DelegateCommand<ListView> CommandClickBtnAbout =>
+            commandClickBtnAbout ?? (commandClickBtnAbout = new DelegateCommand<ListView>(async (l) => { await ExecuteCommandPopUpAsync(l); }));
 
         async Task ExecuteCommandPopUpAsync(ListView listView)
         {
@@ -85,11 +85,14 @@ namespace XFAppToDoList.ViewModels
         {
             try
             {
+                var item = (element as ListView).SelectedItem as Jobs;
                 var p = new NavigationParameters
                 {
-                    { "SelectedItem", (element as ListView).SelectedItem }
+                    {"From","MainPage" },
+                    { "SelectedItem", item },
+                    {"id",ListToDo.IndexOf(item) }
                 };
-                await NavigationService.NavigateAsync("DetailPage", p);
+                NavigationService.NavigateAsync("DetailPage", p);
             }
             catch (Exception ex)
             {
@@ -99,10 +102,32 @@ namespace XFAppToDoList.ViewModels
 
 
         }
-
-        public override void OnNavigatingTo(NavigationParameters parameters)
+        
+        public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            //NavigationService.NavigateAsync("file", parameters);
+            if (parameters.Count != 0)
+            {
+                try
+                {
+if (parameters.GetValue<string>("From").Equals("DetailPage"))
+                {
+                        var index = (int)parameters["id"];
+                        var item= parameters["item"] as Jobs;
+                    if (!ListToDo[(int)parameters["id"]].Equals(parameters["item"] as Jobs))
+                    {
+                            
+                        ListToDo[(int)parameters["id"]] =
+                    }
+                    
+                }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                
+            }
         }
     }
 }
