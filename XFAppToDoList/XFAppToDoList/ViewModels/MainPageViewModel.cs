@@ -116,7 +116,7 @@ if (parameters.GetValue<string>("From").Equals("DetailPage"))
                     if (!ListToDo[(int)parameters["id"]].Equals(parameters["item"] as Jobs))
                     {
                             
-                        ListToDo[(int)parameters["id"]] =
+                        //ListToDo[(int)parameters["id"]] =
                     }
                     
                 }
