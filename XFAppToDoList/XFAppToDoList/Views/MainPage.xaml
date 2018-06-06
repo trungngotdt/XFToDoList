@@ -15,6 +15,7 @@
                      AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
             <Button x:Name="BtnAdd"
                     Text="Add" 
+                    Command="{Binding CommandAddJob}"
                     HorizontalOptions="CenterAndExpand"/>
             <Button x:Name="BtnDelete"
                     Text="Delete"
@@ -37,8 +38,7 @@
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell >
-                            
+                        <ViewCell >                            
                             <StackLayout Orientation="Horizontal" >
                                 <Label Text="{Binding Title}"
                                        HorizontalOptions="CenterAndExpand"

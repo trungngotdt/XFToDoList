@@ -21,6 +21,16 @@ namespace XFAppToDoList.ViewModels
         private string title;
         private DelegateCommand<object> commandPressed;
         private DelegateCommand<ListView> commandClickBtnAbout;
+        private DelegateCommand commandAddJob;
+        public DelegateCommand CommandAddJob =>
+            commandAddJob ?? (commandAddJob = new DelegateCommand(ExecuteCommandAddJob));
+
+        void ExecuteCommandAddJob()
+        {
+            NavigationService.NavigateAsync("DetailPage",new NavigationParameters { {"action","insert" } });
+        }
+
+
         public DelegateCommand<ListView> CommandClickBtnAbout =>
             commandClickBtnAbout ?? (commandClickBtnAbout = new DelegateCommand<ListView>(async (l) => { await ExecuteCommandPopUpAsync(l); }));
 
@@ -30,17 +40,7 @@ namespace XFAppToDoList.ViewModels
             {
                 { "SelectedItem", listView.SelectedItem }
             };
-
-            //var result=await Application.Current.MainPage.DisplayActionSheet("A", "a", "a", new string[] { "l" });
             await NavigationService.NavigateAsync("AboutPage", p);
-            /*ActionSheetButton.CreateButton("", () => { });
-            IActionSheetButton option1Action = ActionSheetButton.CreateButton("Option 1", () => { Debug.WriteLine("Option 1"); });
-            IActionSheetButton option2Action = ActionSheetButton.CreateButton("Option 2", new DelegateCommand(() => { Debug.WriteLine("Option 2"); }));
-            IActionSheetButton cancelAction = ActionSheetButton.CreateCancelButton("Cancel", new DelegateCommand(() => { Debug.WriteLine("Cancel"); }));
-            */
-            //var result= await GetPageDialogService.DisplayActionSheetAsync("Choose","Cancel",null,new string[] { "Option1" });
-            //listToDo.RemoveAt(10);
-            // Debug.WriteLine("Action: " + action);
         }
         private ObservableCollection<Jobs> listToDo;
 
@@ -76,18 +76,20 @@ namespace XFAppToDoList.ViewModels
             set => listToDo = value;
         }
         public DelegateCommand<object> CommandPressed =>
-            commandPressed ?? (commandPressed = new DelegateCommand<object>(async (o) => await ExecuteCommandPressedAsync(o)));
+            commandPressed ?? (commandPressed = new DelegateCommand<object>(ExecuteCommandPressed));
 
         public string GetTitle { get => title; set => title = value; }
         public IPageDialogService GetPageDialogService { get => getPageDialogService; set => getPageDialogService = value; }
 
-        async Task ExecuteCommandPressedAsync(object element)
+        void ExecuteCommandPressed(object element)
         {
             try
             {
                 var item = (element as ListView).SelectedItem as Jobs;
                 var p = new NavigationParameters
                 {
+                    {"action","update" },
+                    {"value","have" },
                     {"From","MainPage" },
                     { "SelectedItem", item },
                     {"id",ListToDo.IndexOf(item) }
@@ -96,37 +98,45 @@ namespace XFAppToDoList.ViewModels
             }
             catch (Exception ex)
             {
-
                 Debug.WriteLine(ex);
             }
-
-
         }
-        
+
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.Count != 0)
             {
                 try
                 {
-if (parameters.GetValue<string>("From").Equals("DetailPage"))
-                {
-                        var index = (int)parameters["id"];
-                        var item= parameters["item"] as Jobs;
-                    if (!ListToDo[(int)parameters["id"]].Equals(parameters["item"] as Jobs))
+                    if (parameters.GetValue<string>("From").Equals("DetailPage"))
                     {
-                            
-                        //ListToDo[(int)parameters["id"]] =
+                        var index = (int)parameters["id"];
+                        var item = parameters["item"] as Jobs;
+                        if (parameters["action"].ToString().Equals("update"))
+                        {
+                            if (!ListToDo[index].Equals(item))
+                            {
+                                var temp = ListToDo[index];
+                                var getAllProperties = item.GetType().GetProperties();
+                                foreach (var property in getAllProperties)
+                                {
+                                    temp.GetType().GetProperty(property.Name).SetValue(temp, property.GetValue(item, null));
+                                }
+                            }
+                        }
+                        else if(parameters["action"].ToString().Equals("insert"))
+                        {
+                            ListToDo.Add(item);
+                        }
+                       
                     }
-                    
-                }
                 }
                 catch (Exception ex)
                 {
 
                     throw ex;
                 }
-                
+
             }
         }
     }

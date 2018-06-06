@@ -1,24 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace XFAppToDoList.Models
 {
-    public class Jobs
+    public class Jobs: INotifyPropertyChanged
     {
         private string title;
         private string detail;
         private bool available;
         private DateTime date;
 
-        public string Detail { get => detail; set => detail = value; }
-        public bool Available { get => available; set => available = value; }
-        public DateTime Date { get => date; set => date = value; }
-        public string Title { get => title; set => title = value; }
+        public string Detail { get => detail; set
+            {
+                if (detail!=value)
+                {
+                    detail = value;
+                    OnPropertyChanged("Detail");
+                }
+                
+            }
+        }
+        public bool Available { get => available;set
+            {
+                if (available != value)
+                {
+                    available = value;
+                    OnPropertyChanged("available");
+                }
+
+            }
+        }
+        public DateTime Date { get => date; set
+            {
+                if (date!= value)
+                {
+                    date = value;
+                    OnPropertyChanged("date");
+                }
+
+            }
+        }
+        public string Title { get => title; set
+            {
+                if (title != value)
+                {
+                    title = value;
+                    OnPropertyChanged("Title");
+                }
+
+            }
+        }
 
         public Jobs()
         {
-
+             
         }
         public Jobs(string title,string detail,bool available,DateTime date)
         {
@@ -37,6 +74,19 @@ namespace XFAppToDoList.Models
                     && this.Available.Equals(guest.Available) && this.Date.Equals(guest.Date);
             }
             return false;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         public override string ToString()

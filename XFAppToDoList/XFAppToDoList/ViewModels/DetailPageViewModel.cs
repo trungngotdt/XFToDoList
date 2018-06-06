@@ -11,8 +11,9 @@ using System.Globalization;
 
 namespace XFAppToDoList.ViewModels
 {
-	public class DetailPageViewModel : ViewModelBase
-	{
+    public class DetailPageViewModel : ViewModelBase
+    {
+        private string action;
         private DateTime date;
         private TimeSpan time;
         private string titleJobs;
@@ -22,10 +23,17 @@ namespace XFAppToDoList.ViewModels
 
         private DelegateCommand<object> commandClickOk;
         public DelegateCommand<object> CommandClickOk =>
-            commandClickOk ?? (commandClickOk = new DelegateCommand<object>((para)=> {ExecuteCommandClickOkAsync(para); }));
+            commandClickOk ?? (commandClickOk = new DelegateCommand<object>((para) => { ExecuteCommandClickOk(para); }));
+        private DelegateCommand commandCancel;
+        public DelegateCommand CommandCancel =>
+            commandCancel ?? (commandCancel = new DelegateCommand(ExecuteCommandCancel));
 
-        
-        
+        void ExecuteCommandCancel()
+        {
+            NavigationService.GoBackAsync();
+        }
+
+
         public DetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Detail Page";
@@ -36,26 +44,32 @@ namespace XFAppToDoList.ViewModels
         public string Detail { get => detail; set => detail = value; }
         public string TitleJobs { get => titleJobs; set => titleJobs = value; }
         public bool Available { get => available; set => available = value; }
+        public string Action { get => action; set => action = value; }
 
-        void ExecuteCommandClickOkAsync(object parameters)
+        void ExecuteCommandClickOk(object parameters)
         {
             var jobEdit = new Jobs(TitleJobs, Detail, Available, new DateTime(Date.Year, Date.Month, Date.Day, Time.Hours, Time.Minutes, Time.Seconds, DateTimeKind.Local));
-            var p = new NavigationParameters { { "From", "DetailPage" }, { "id", index }, { "item", jobEdit } };
-           NavigationService.GoBackAsync(p);
+            var p = new NavigationParameters { {"action",Action },{"value","have" }, { "From", "DetailPage" }, { "id", index }, { "item", jobEdit } };
+            NavigationService.GoBackAsync(p);
         }
-        
+
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            var job = parameters["SelectedItem"] as Jobs;
-            index =(int) parameters["id"];
-            TitleJobs = job.Title;
-            Date = job.Date.Date;
-            Detail = job.Detail;
-            Time = job.Date.TimeOfDay;
-            RaisePropertyChanged("Date");
-            RaisePropertyChanged("Detail");
-            RaisePropertyChanged("TitleJobs");
-            RaisePropertyChanged("Time");
+            Action = parameters["action"].ToString();
+            if (Action.Equals("update"))
+            {
+                var job = parameters["SelectedItem"] as Jobs;
+                index = (int)parameters["id"];
+                TitleJobs = job.Title;
+                Date = job.Date.Date;
+                Detail = job.Detail;
+                Time = job.Date.TimeOfDay;
+                RaisePropertyChanged("Date");
+                RaisePropertyChanged("Detail");
+                RaisePropertyChanged("TitleJobs");
+                RaisePropertyChanged("Time");
+            }
+
         }
     }
 }
