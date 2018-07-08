@@ -23,7 +23,7 @@ namespace XFAppToDoList.ViewModels
 
         private DelegateCommand<object> commandClickOk;
         public DelegateCommand<object> CommandClickOk =>
-            commandClickOk ?? (commandClickOk = new DelegateCommand<object>((para) => { ExecuteCommandClickOk(para); }));
+            commandClickOk ?? (commandClickOk = new DelegateCommand<object>((para) => { ExecuteCommandClickOkAsync(para); }));
         private DelegateCommand commandCancel;
         public DelegateCommand CommandCancel =>
             commandCancel ?? (commandCancel = new DelegateCommand(ExecuteCommandCancel));
@@ -46,11 +46,11 @@ namespace XFAppToDoList.ViewModels
         public bool Available { get => available; set => available = value; }
         public string Action { get => action; set => action = value; }
 
-        void ExecuteCommandClickOk(object parameters)
+        async void ExecuteCommandClickOkAsync(object parameters)
         {
             var jobEdit = new Jobs(TitleJobs, Detail, Available, new DateTime(Date.Year, Date.Month, Date.Day, Time.Hours, Time.Minutes, Time.Seconds, DateTimeKind.Local));
             var p = new NavigationParameters { {"action",Action },{"value","have" }, { "From", "DetailPage" }, { "id", index }, { "item", jobEdit } };
-            NavigationService.GoBackAsync(p);
+            await NavigationService.GoBackAsync(p);
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)

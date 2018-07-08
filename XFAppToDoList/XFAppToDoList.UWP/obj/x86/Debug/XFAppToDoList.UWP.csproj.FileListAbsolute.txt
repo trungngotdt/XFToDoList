@@ -301,3 +301,5 @@ C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.UWP\obj\x8
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.UWP\obj\x86\Debug\Prism.pri.xml
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.UWP\obj\x86\Debug\Xamarin.Forms.Platform.UAP.pri.xml
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.UWP\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.UWP\bin\x86\Debug\Flex.dll
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.UWP\obj\x86\Debug\XamlC.stamp

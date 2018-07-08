@@ -6,10 +6,12 @@
              x:Class="XFAppToDoList.Views.DetailPage"
              xmlns:i="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              Title="{Binding Title}">
-
+    
     <StackLayout x:Name="StaLayMain"
                  BackgroundColor="Red" 
                  Orientation="Vertical">
+        
+       
         <Entry x:Name="EntTitle"
                Text="{Binding TitleJobs}"/>
         <DatePicker x:Name="DpDate"
@@ -20,12 +22,14 @@
                 Text="{Binding Detail}"
                 VerticalOptions="FillAndExpand"
                 BackgroundColor="White"/>
+        
         <StackLayout VerticalOptions="End"
                      BackgroundColor="Black"
                      Orientation="Horizontal">
             <Button x:Name="BtnOk"
                     Text="Ok" 
                     HorizontalOptions="CenterAndExpand">
+               
                 <Button.Behaviors>
                     <i:EventToCommandBehavior EventName="Clicked"
                                               Command="{Binding CommandClickOk}"
@@ -35,6 +39,7 @@
             </Button>
             <Button x:Name="BtnCancel"
                     Text="Cancel"
+                    Command="{Binding CommandCancel}"
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
 

@@ -3,24 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFAppToDoList.Views.MainPage"
              xmlns:i="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-             Title="{Binding GetTitle}">
+             Title="{Binding GetTitle}"
+             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
 
-    <AbsoluteLayout>
-        <StackLayout BackgroundColor="Red"
-                     AbsoluteLayout.LayoutBounds="0,0,1,0.1"
-                     AbsoluteLayout.LayoutFlags="HeightProportional,WidthProportional"/>
-         <StackLayout BackgroundColor="Wheat"
+    <!--
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="Android">
+            <Label Text="Android"/>
+        </On>
+        <On Platform="WPF">
+            
+        </On>
+    </OnPlatform>
+    -->
+
+
+
+    <AbsoluteLayout >
+
+
+        <Frame BorderColor="Black"
+               Padding="0,0,0,0"
+               AbsoluteLayout.LayoutBounds="0,0,1,0.1"
+               AbsoluteLayout.LayoutFlags="HeightProportional,WidthProportional">
+            <StackLayout Orientation="Horizontal" 
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+                <Label Text="All"
+                       Margin="0,20,0,0"
+                       FontSize="Medium"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="StartAndExpand"
+                       IsVisible="{Binding IsToggleDeleteVisible}"/>
+                <flex:FlexButton IsVisible="{Binding IsToggleDeleteVisible}"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 CornerRadius="38"
+                                 Margin="0,0,20,0"
+                                 ToggleMode="True"
+                                 Icon="https://png.icons8.com/ios/50/000000/checkmark.png"
+                                 ForegroundColor="#6279B8"
+                                 HighlightForegroundColor="#ffffff"
+                                 BackgroundColor="White"
+                                 HighlightBackgroundColor="#6279B8"
+                                 BorderColor="#6279B8"
+                                 HighlightBorderColor="#49516F"
+                                 HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </Frame>
+        <StackLayout x:Name="ScLFooter"
+                     BackgroundColor="Wheat"
                      Orientation="Horizontal" 
                      AbsoluteLayout.LayoutBounds="1,1,1,0.1"
                      AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
             <Button x:Name="BtnAdd"
-                    Text="Add" 
+                    Text="Add"
                     Command="{Binding CommandAddJob}"
                     HorizontalOptions="CenterAndExpand"/>
-            <Button x:Name="BtnDelete"
-                    Text="Delete"
+            <Button x:Name="BtnChoice"
+                    Text="Choice"
+                    Command="{Binding CommandBtnChoicePressed}"
                     HorizontalOptions="CenterAndExpand"/>
-            <Button x:Name="BtnAbout"
+            <Button x:Name="BtnAbout" 
                     Text="About"
                     Command="{Binding CommandClickBtnAbout}"
                     CommandParameter="{x:Reference LsvToDo}"
@@ -34,12 +78,15 @@
                 <ListView.Behaviors>
                     <i:EventToCommandBehavior EventName="ItemTapped"
                                               Command="{Binding CommandPressed}"
-                                              CommandParameter="{ x:Reference LsvToDo} "/>
+                                              CommandParameter="{x:Reference LsvToDo} "/>
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell >                            
-                            <StackLayout Orientation="Horizontal" >
+                        <ViewCell >
+                            <StackLayout x:Name="StLItem"
+                                         HeightRequest="30"
+                                         Orientation="Horizontal">
+
                                 <Label Text="{Binding Title}"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
@@ -50,35 +97,45 @@
                                 <Label Text="{Binding Date}"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
-                                <Label Text="Status :"
+                                <!--
+                                 <Label Text="Status :"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
                                 <Switch VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="EndAndExpand"
                                         IsToggled="{Binding Available}"/>
-                               
-                                <!--
-                                 <Button VerticalOptions="EndAndExpand" 
-                                        Opacity="1"
-                                        BindingContext="{Binding Source={x:Reference LsvToDo},Path=BindingContext}"
-                                        HorizontalOptions="EndAndExpand" 
-                                        Rotation="-90"
-                                        Command="{Binding CommandPressed}"
-                                        CommandParameter="{Binding }"
-                                        Text="..."/>
                                 -->
-                               
-                                   
-                          
+                                <flex:FlexButton IsVisible="{Binding IsToggleDeleteVisible}"
+                                                 BindingContext="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext}"
+                                                 WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
+                                                 HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"                                                
+                                                 CornerRadius="38"
+                                                 Margin="0,0,20,0"
+                                                 ToggleMode="True"
+                                                 Icon="https://png.icons8.com/ios/50/000000/checkmark.png"
+                                                 ForegroundColor="#6279B8"
+                                                 HighlightForegroundColor="#ffffff"
+                                                 BackgroundColor="White"
+                                                 HighlightBackgroundColor="#6279B8"
+                                                 BorderColor="#6279B8"
+                                                 HighlightBorderColor="#49516F"/>
+                                <!--
+                                     HorizontalOptions="Center"
+                                                 ToggleMode="True"
+                                                 BorderColor="Black"
+                                                 HighlightBorderColor="Black"
+                                                 ForegroundColor="Black"
+                                                 HighlightForegroundColor="Yellow"
+                                                 BackgroundColor="Red"
+                                                 HighlightBackgroundColor="White" />
+                                    -->
 
                             </StackLayout>
-                            
                         </ViewCell>
-                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-       
     </AbsoluteLayout>
+
 </ContentPage>

@@ -19,18 +19,15 @@ namespace XFAppToDoList.ViewModels
     {
         private IPageDialogService getPageDialogService;
         private string title;
+        private bool isToggleDeleteVisible;
+        private DelegateCommand commandBtnChoicePressed;
         private DelegateCommand<object> commandPressed;
         private DelegateCommand<ListView> commandClickBtnAbout;
         private DelegateCommand commandAddJob;
+        public DelegateCommand CommandBtnChoicePressed =>
+            commandBtnChoicePressed ?? (commandBtnChoicePressed = new DelegateCommand(ExecuteCommandBtnChoicePressed));
         public DelegateCommand CommandAddJob =>
             commandAddJob ?? (commandAddJob = new DelegateCommand(ExecuteCommandAddJob));
-
-        void ExecuteCommandAddJob()
-        {
-            NavigationService.NavigateAsync("DetailPage",new NavigationParameters { {"action","insert" } });
-        }
-
-
         public DelegateCommand<ListView> CommandClickBtnAbout =>
             commandClickBtnAbout ?? (commandClickBtnAbout = new DelegateCommand<ListView>(async (l) => { await ExecuteCommandPopUpAsync(l); }));
 
@@ -76,12 +73,13 @@ namespace XFAppToDoList.ViewModels
             set => listToDo = value;
         }
         public DelegateCommand<object> CommandPressed =>
-            commandPressed ?? (commandPressed = new DelegateCommand<object>(ExecuteCommandPressed));
+            commandPressed ?? (commandPressed = new DelegateCommand<object>(ExecuteCommandPressedAsync));
 
         public string GetTitle { get => title; set => title = value; }
         public IPageDialogService GetPageDialogService { get => getPageDialogService; set => getPageDialogService = value; }
+        public bool IsToggleDeleteVisible { get => isToggleDeleteVisible; set => isToggleDeleteVisible = value; }
 
-        void ExecuteCommandPressed(object element)
+        async void ExecuteCommandPressedAsync(object element)
         {
             try
             {
@@ -94,14 +92,22 @@ namespace XFAppToDoList.ViewModels
                     { "SelectedItem", item },
                     {"id",ListToDo.IndexOf(item) }
                 };
-                NavigationService.NavigateAsync("DetailPage", p);
+               await NavigationService.NavigateAsync("DetailPage", p);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
         }
-
+        void ExecuteCommandBtnChoicePressed()
+        {
+            IsToggleDeleteVisible = !IsToggleDeleteVisible;
+            RaisePropertyChanged("IsToggleDeleteVisible");
+        }
+        void ExecuteCommandAddJob()
+        {
+            NavigationService.NavigateAsync("DetailPage", new NavigationParameters { { "action", "insert" } });
+        }
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.Count != 0)

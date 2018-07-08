@@ -1,0 +1,14 @@
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\bin\Debug\netstandard2.0\XFAppToDoList.deps.json
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\bin\Debug\netstandard2.0\XFAppToDoList.dll
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\bin\Debug\netstandard2.0\XFAppToDoList.pdb
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\XFAppToDoList.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\Views\DetailPage.xaml.g.cs
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\XFAppToDoList.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\XFAppToDoList.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\XFAppToDoList.AssemblyInfo.cs
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\XFAppToDoList.dll
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList\obj\Debug\netstandard2.0\XFAppToDoList.pdb
