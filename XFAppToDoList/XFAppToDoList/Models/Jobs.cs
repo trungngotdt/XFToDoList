@@ -27,7 +27,7 @@ namespace XFAppToDoList.Models
                 if (available != value)
                 {
                     available = value;
-                    OnPropertyChanged("available");
+                    OnPropertyChanged("Available");
                 }
 
             }
@@ -37,7 +37,7 @@ namespace XFAppToDoList.Models
                 if (date!= value)
                 {
                     date = value;
-                    OnPropertyChanged("date");
+                    OnPropertyChanged("Date");
                 }
 
             }

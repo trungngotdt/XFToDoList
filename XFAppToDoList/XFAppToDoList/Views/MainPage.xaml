@@ -35,7 +35,9 @@
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="StartAndExpand"
                        IsVisible="{Binding IsToggleDeleteVisible}"/>
-                <flex:FlexButton IsVisible="{Binding IsToggleDeleteVisible}"
+                <flex:FlexButton x:Name="BtnAll"
+                                 
+                                 IsVisible="{Binding IsToggleDeleteVisible}"
                                  HeightRequest="30"
                                  WidthRequest="30"
                                  CornerRadius="38"
@@ -56,20 +58,36 @@
                      Orientation="Horizontal" 
                      AbsoluteLayout.LayoutBounds="1,1,1,0.1"
                      AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
+            
+            <Button x:Name="BtnCancel"
+                    Text="Cancel"
+                    IsVisible="{Binding IsToggleDeleteVisible}"
+                    HorizontalOptions="CenterAndExpand"/>
+            
+            <Button x:Name="BtnDeleteSelect"
+                    Text="Delete"
+                    IsVisible="{Binding IsToggleDeleteVisible}"
+                    HorizontalOptions="CenterAndExpand"/>
+            
             <Button x:Name="BtnAdd"
                     Text="Add"
+                    IsVisible="{Binding IsNormalMode}"
                     Command="{Binding CommandAddJob}"
                     HorizontalOptions="CenterAndExpand"/>
+            
             <Button x:Name="BtnChoice"
                     Text="Choice"
+                    IsVisible="{Binding IsNormalMode}"
                     Command="{Binding CommandBtnChoicePressed}"
                     HorizontalOptions="CenterAndExpand"/>
             <Button x:Name="BtnAbout" 
                     Text="About"
+                    IsVisible="{Binding IsNormalMode}"
                     Command="{Binding CommandClickBtnAbout}"
                     CommandParameter="{x:Reference LsvToDo}"
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
+        
         <ScrollView AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
                     AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
             <ListView x:Name="LsvToDo" 
@@ -77,7 +95,7 @@
                       ItemsSource="{Binding ListToDo}" >
                 <ListView.Behaviors>
                     <i:EventToCommandBehavior EventName="ItemTapped"
-                                              Command="{Binding CommandPressed}"
+                                              Command="{Binding CommandItemPressed}"
                                               CommandParameter="{x:Reference LsvToDo} "/>
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
@@ -105,10 +123,10 @@
                                         HorizontalOptions="EndAndExpand"
                                         IsToggled="{Binding Available}"/>
                                 -->
-                                <flex:FlexButton IsVisible="{Binding IsToggleDeleteVisible}"
-                                                 BindingContext="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext}"
+                                <flex:FlexButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsToggleDeleteVisible}"
                                                  WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
-                                                 HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"                                                
+                                                 HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"
+                                                 IsToggled="{Binding Available}"
                                                  CornerRadius="38"
                                                  Margin="0,0,20,0"
                                                  ToggleMode="True"

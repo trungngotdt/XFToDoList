@@ -17,11 +17,16 @@ namespace XFAppToDoList.ViewModels
 {
     public class MainPageViewModel : ViewModelBase //ContentPage
     {
+        private int countItemSelect;
+
+
         private IPageDialogService getPageDialogService;
         private string title;
         private bool isToggleDeleteVisible;
+        private bool isCheckToggleBtnAll;
+        private bool isNormalMode;
         private DelegateCommand commandBtnChoicePressed;
-        private DelegateCommand<object> commandPressed;
+        private DelegateCommand<object> commandItemPressed;
         private DelegateCommand<ListView> commandClickBtnAbout;
         private DelegateCommand commandAddJob;
         public DelegateCommand CommandBtnChoicePressed =>
@@ -44,19 +49,20 @@ namespace XFAppToDoList.ViewModels
         public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService)
         {
+            IsNormalMode = true;
             getPageDialogService = pageDialogService;
             GetTitle = "Main Page";
             ListToDo.Add(new Jobs("Job a", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job b", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job c", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job d", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job e", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job f", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job g", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job h", "Job", true, DateTime.Now));
+            ListToDo.Add(new Jobs("Job b", "Job", false, DateTime.Now));
+            ListToDo.Add(new Jobs("Job c", "Job", false, DateTime.Now));
+            ListToDo.Add(new Jobs("Job d", "Job", false, DateTime.Now));
+            ListToDo.Add(new Jobs("Job e", "Job", false, DateTime.Now));
+            ListToDo.Add(new Jobs("Job f", "Job", false, DateTime.Now));
+            ListToDo.Add(new Jobs("Job g", "Job", false, DateTime.Now));
+            ListToDo.Add(new Jobs("Job h", "Job", false, DateTime.Now));
             for (int i = 0; i < 50; i++)
             {
-                ListToDo.Add(new Jobs($"Job {i}", "Job", true, DateTime.Now));
+                ListToDo.Add(new Jobs($"Job {i}", "Job", false, DateTime.Now));
             }
         }
 
@@ -72,36 +78,48 @@ namespace XFAppToDoList.ViewModels
             }
             set => listToDo = value;
         }
-        public DelegateCommand<object> CommandPressed =>
-            commandPressed ?? (commandPressed = new DelegateCommand<object>(ExecuteCommandPressedAsync));
+        public DelegateCommand<object> CommandItemPressed =>
+            commandItemPressed ?? (commandItemPressed = new DelegateCommand<object>(ExecuteCommandItemPressedAsync));
 
         public string GetTitle { get => title; set => title = value; }
         public IPageDialogService GetPageDialogService { get => getPageDialogService; set => getPageDialogService = value; }
         public bool IsToggleDeleteVisible { get => isToggleDeleteVisible; set => isToggleDeleteVisible = value; }
+        public bool IsCheckToggleBtnAll { get => isCheckToggleBtnAll; set => isCheckToggleBtnAll = value; }
+        public bool IsNormalMode { get => isNormalMode; set { isNormalMode = value;RaisePropertyChanged("IsNormalMode"); } }
 
-        async void ExecuteCommandPressedAsync(object element)
+        async void ExecuteCommandItemPressedAsync(object element)
         {
-            try
+            var item = (element as ListView).SelectedItem as Jobs;
+            if (IsToggleDeleteVisible)
             {
-                var item = (element as ListView).SelectedItem as Jobs;
-                var p = new NavigationParameters
+                item.Available = !item.Available;
+                countItemSelect = (item.Available) ? countItemSelect + 1 : countItemSelect - 1;
+            }
+            else
+            {
+                try
                 {
-                    {"action","update" },
-                    {"value","have" },
-                    {"From","MainPage" },
-                    { "SelectedItem", item },
-                    {"id",ListToDo.IndexOf(item) }
-                };
-               await NavigationService.NavigateAsync("DetailPage", p);
+                    var p = new NavigationParameters
+                    {
+                        { "action","update" },
+                        { "value","have" },
+                        { "From","MainPage" },
+                        { "SelectedItem", item },
+                        { "id",ListToDo.IndexOf(item) }
+                    };
+                    await NavigationService.NavigateAsync("DetailPage", p);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
             }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
+
         }
         void ExecuteCommandBtnChoicePressed()
         {
             IsToggleDeleteVisible = !IsToggleDeleteVisible;
+            IsNormalMode = false;
             RaisePropertyChanged("IsToggleDeleteVisible");
         }
         void ExecuteCommandAddJob()
@@ -130,11 +148,10 @@ namespace XFAppToDoList.ViewModels
                                 }
                             }
                         }
-                        else if(parameters["action"].ToString().Equals("insert"))
+                        else if (parameters["action"].ToString().Equals("insert"))
                         {
                             ListToDo.Add(item);
                         }
-                       
                     }
                 }
                 catch (Exception ex)
