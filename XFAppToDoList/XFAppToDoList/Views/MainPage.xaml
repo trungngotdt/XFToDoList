@@ -34,11 +34,11 @@
                        FontSize="Medium"
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="StartAndExpand"
-                       IsVisible="{Binding IsToggleDeleteVisible}"/>
-                <flex:FlexButton x:Name="BtnAll"
-                                 
-                                 IsVisible="{Binding IsToggleDeleteVisible}"
+                       IsVisible="{Binding IsDeleteMode}"/>
+                <flex:FlexButton x:Name="BtnDeleteAll"                                 
+                                 IsVisible="{Binding IsDeleteMode}"
                                  HeightRequest="30"
+                                 IsToggled="{Binding IsCheckBtnDeleteAll}"
                                  WidthRequest="30"
                                  CornerRadius="38"
                                  Margin="0,0,20,0"
@@ -61,12 +61,14 @@
             
             <Button x:Name="BtnCancel"
                     Text="Cancel"
-                    IsVisible="{Binding IsToggleDeleteVisible}"
+                    Command="{Binding CommandBtnCancelPress}"
+                    IsVisible="{Binding IsDeleteMode}"
                     HorizontalOptions="CenterAndExpand"/>
             
             <Button x:Name="BtnDeleteSelect"
+                    Command="{Binding CommandBtnDeleteSelectPress}"
                     Text="Delete"
-                    IsVisible="{Binding IsToggleDeleteVisible}"
+                    IsVisible="{Binding IsDeleteMode}"
                     HorizontalOptions="CenterAndExpand"/>
             
             <Button x:Name="BtnAdd"
@@ -123,7 +125,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         IsToggled="{Binding Available}"/>
                                 -->
-                                <flex:FlexButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsToggleDeleteVisible}"
+                                <flex:FlexButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
                                                  WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
                                                  HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"
                                                  IsToggled="{Binding Available}"
