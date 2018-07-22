@@ -21,12 +21,9 @@
 
     <AbsoluteLayout >
 
-
-        <Frame BorderColor="Black"
-               Padding="0,0,0,0"
-               AbsoluteLayout.LayoutBounds="0,0,1,0.1"
-               AbsoluteLayout.LayoutFlags="HeightProportional,WidthProportional">
             <StackLayout Orientation="Horizontal" 
+                         AbsoluteLayout.LayoutBounds="0,0,1,0.1"
+                         AbsoluteLayout.LayoutFlags="HeightProportional,WidthProportional"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand">
                 <Label Text="All"
@@ -35,10 +32,12 @@
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="StartAndExpand"
                        IsVisible="{Binding IsDeleteMode}"/>
-                <flex:FlexButton x:Name="BtnDeleteAll"                                 
+                <Entry HeightRequest="100"
+                   WidthRequest="100"/>
+            <flex:FlexButton x:Name="BtnDeleteAll"                                 
                                  IsVisible="{Binding IsDeleteMode}"
                                  HeightRequest="30"
-                                 IsToggled="{Binding IsCheckBtnDeleteAll}"
+                                
                                  WidthRequest="30"
                                  CornerRadius="38"
                                  Margin="0,0,20,0"
@@ -51,8 +50,8 @@
                                  BorderColor="#6279B8"
                                  HighlightBorderColor="#49516F"
                                  HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
-        </Frame>
+            
+        </StackLayout>
         <StackLayout x:Name="ScLFooter"
                      BackgroundColor="Wheat"
                      Orientation="Horizontal" 
@@ -120,11 +119,12 @@
                                 <!--
                                  <Label Text="Status :"
                                        HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"/>
+                                       VerticalOptions="CenterAndExpand"/>Icon="https://png.icons8.com/ios/50/000000/checkmark.png"
                                 <Switch VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="EndAndExpand"
                                         IsToggled="{Binding Available}"/>
                                 -->
+                               
                                 <flex:FlexButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
                                                  WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
                                                  HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"
@@ -132,13 +132,13 @@
                                                  CornerRadius="38"
                                                  Margin="0,0,20,0"
                                                  ToggleMode="True"
-                                                 Icon="https://png.icons8.com/ios/50/000000/checkmark.png"
-                                                 ForegroundColor="#6279B8"
-                                                 HighlightForegroundColor="#ffffff"
+                                                 
+                                                 ForegroundColor="Black"
+                                                 HighlightForegroundColor="Yellow"
                                                  BackgroundColor="White"
-                                                 HighlightBackgroundColor="#6279B8"
-                                                 BorderColor="#6279B8"
-                                                 HighlightBorderColor="#49516F"/>
+                                                 HighlightBackgroundColor= "Red"
+                                                 BorderColor="White"
+                                                 HighlightBorderColor="White"/>
                                 <!--
                                      HorizontalOptions="Center"
                                                  ToggleMode="True"
