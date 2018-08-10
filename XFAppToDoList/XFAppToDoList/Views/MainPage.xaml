@@ -6,24 +6,6 @@
              xmlns:i="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              Title="{Binding GetTitle}"
              xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
-<!--
-     <StackLayout BackgroundColor="Aqua">
-        <Button Image="https://png.icons8.com/material/48/000000/checkmark.png"
-                BackgroundColor="White" 
-                WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <custom:ToggleButton Icon="https://png.icons8.com/ios/50/000000/checkmark.png" 
-                             HeightRequest="40"
-                             WidthRequest="40"
-                             HorizontalOptions="EndAndExpand"
-                             FillColorCheck="Red"
-                             FillColorUnCheck="White"
-                             BorderRadius="20"/>
-    </StackLayout>
-    -->
-   
-
-
-
     <AbsoluteLayout >
 
         <StackLayout Orientation="Horizontal" 
@@ -86,9 +68,10 @@
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
 
-        <ScrollView AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
-                    AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
+       
             <ListView x:Name="LsvToDo" 
+                      AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
+                    AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional"
                       HasUnevenRows="True"
                       ItemsSource="{Binding ListToDo}" >
                 <ListView.Behaviors>
@@ -106,10 +89,12 @@
                                 <Label Text="{Binding Title}"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
-                                <Label Text="{Binding Detail}"
+                                <!-- <Label Text="{Binding Detail}"
                                        IsVisible="False"                                       
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
+                                -->
+                               
                                 <Label Text="{Binding Date}"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
@@ -144,7 +129,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </ScrollView>
+        
     </AbsoluteLayout>
     
     

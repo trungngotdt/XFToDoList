@@ -24,13 +24,7 @@ namespace XFAppToDoList.CustomControl
 
         public static readonly BindableProperty CommandParameterProperty =
             BindableProperty.Create("CommandParameter", typeof(object), typeof(ToggleButton), null);
-
-        public static readonly BindableProperty BorderRadiusProperty =
-            BindableProperty.Create(propertyName: nameof(BorderRadius),
-                returnType: typeof(int),
-                declaringType:typeof(ToggleButton),
-                defaultValue:0);
-
+        
         public static readonly BindableProperty IconProperty =
             BindableProperty.Create(propertyName :nameof(Icon),
                 returnType: typeof(String),
@@ -79,13 +73,7 @@ namespace XFAppToDoList.CustomControl
             get { return GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
         }
-
-        public int BorderRadius
-        {
-            get { return (int)GetValue(BorderRadiusProperty); }
-            set { SetValue(BorderRadiusProperty, value); }
-        }
-
+        
         private ICommand _toggleCommand;
         public ICommand ToogleCommand
         {
@@ -115,10 +103,14 @@ namespace XFAppToDoList.CustomControl
 
         public ToggleButton()
         {
-            GestureRecognizers.Add(new TapGestureRecognizer
+            if(Device.RuntimePlatform!=Device.WPF)
             {
-                Command = ToogleCommand
-            });
+                GestureRecognizers.Add(new TapGestureRecognizer
+                {
+                    Command = ToogleCommand
+                });
+            }
+            
         }
     }
 }

@@ -15,10 +15,10 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI;
 using Windows.UI.Xaml;
 
-[assembly: ExportRenderer(typeof(ToggleButton), typeof(ToggleButtonRenderer))]
+[assembly: ExportRenderer(typeof(ToggleButton), typeof(ToggleButtonRendererUwp))]
 namespace XFAppToDoList.UWP
 {
-    public class ToggleButtonRenderer : ViewRenderer<ToggleButton, FormsButton>
+    public class ToggleButtonRendererUwp : ViewRenderer<ToggleButton, FormsButton>
     {
 
         protected override void OnElementChanged(ElementChangedEventArgs<ToggleButton> e)
