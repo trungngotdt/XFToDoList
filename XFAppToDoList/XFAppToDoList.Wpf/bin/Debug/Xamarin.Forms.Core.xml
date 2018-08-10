@@ -455,26 +455,26 @@
             </remarks>
         </member>
         <member name="T:Xamarin.Forms.AccessKeyPlacement">
-            <summary>To be added.</summary>
+            <summary>Enumerates access key placement relative to the control that the access key describes.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.AccessKeyPlacement.Auto">
-            <summary>To be added.</summary>
+            <summary>Indicates that the default access key placement will be used.</summary>
         </member>
         <member name="F:Xamarin.Forms.AccessKeyPlacement.Bottom">
-            <summary>To be added.</summary>
+            <summary>Indicates that the access key will appear below the lower edge of the described element.</summary>
         </member>
         <member name="F:Xamarin.Forms.AccessKeyPlacement.Center">
-            <summary>To be added.</summary>
+            <summary>Indicates that the access key will be overlaid on top of the center of the described element.</summary>
         </member>
         <member name="F:Xamarin.Forms.AccessKeyPlacement.Left">
-            <summary>To be added.</summary>
+            <summary>Indicates that the access key will appear to the left of the left edge of the described element.</summary>
         </member>
         <member name="F:Xamarin.Forms.AccessKeyPlacement.Right">
-            <summary>To be added.</summary>
+            <summary>Indicates that the access key will appear to the right of the right edge of the described element.</summary>
         </member>
         <member name="F:Xamarin.Forms.AccessKeyPlacement.Top">
-            <summary>To be added.</summary>
+            <summary>Indicates that the access key will appear above the top edge of the described element.</summary>
         </member>
         <member name="T:Xamarin.Forms.ActivityIndicator">
             <summary>A visual control used to indicate that something is ongoing.</summary>
@@ -809,7 +809,7 @@ var indicator = new ActivityIndicator {
             <remarks>To be added.</remarks>
         </member>
         <member name="E:Xamarin.Forms.Application.PageDisappearing">
-            <summary>Event that is raised when a page is about to disappear from the screen..</summary>
+            <summary>Event that is raised when a page is about to disappear from the screen.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Application.PanGestureId">
@@ -853,7 +853,7 @@ var indicator = new ActivityIndicator {
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Application.SendSleep">
-            <summary>To be added.</summary>
+            <summary>For internal use by the Xamarin.Forms platform.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Application.SendSleepAsync">
@@ -4692,7 +4692,7 @@ DatePicker datePicker = new DatePicker
             <remarks />
         </member>
         <member name="P:Xamarin.Forms.DatePicker.FontAttributes">
-            <summary>Gets a value that indicates whether the font for the searchbar text is bold, italic, or neither.</summary>
+            <summary>Gets a value that indicates whether the font for the date picker text is bold, italic, or neither.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -4908,28 +4908,28 @@ var secondFetch = DependencyService.Get<IDependencyTest> (DependencyFetchTarget.
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.DependencyService.Get``1(Xamarin.Forms.DependencyFetchTarget)">
-            <typeparam name="T">To be added.</typeparam>
+            <typeparam name="T">The type of object to fetch.</typeparam>
             <param name="fetchTarget">The dependency fetch target.</param>
-            <summary>Returns the platform-specific implementation of type T.</summary>
+            <summary>Returns the platform-specific implementation of type <paramref name="T" />.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.DependencyService.Register``1">
-            <typeparam name="T">To be added.</typeparam>
+            <typeparam name="T">The type of object to register.</typeparam>
             <summary>Registers the platform-specific implementation of type T.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.DependencyService.Register``2">
-            <typeparam name="T">To be added.</typeparam>
-            <typeparam name="TImpl">To be added.</typeparam>
+            <typeparam name="T">The type of object to register.</typeparam>
+            <typeparam name="TImpl">The implementation to register.</typeparam>
             <summary>Registers the platform-specific implementation of type T.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.DependencyService.Resolve``1(Xamarin.Forms.DependencyFetchTarget)">
-            <typeparam name="T">To be added.</typeparam>
-            <param name="fallbackFetchTarget">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <typeparam name="T">The type to resolve.</typeparam>
+            <param name="fallbackFetchTarget">The fetch target to use if fetching initially fails.</param>
+            <summary>The method to use to resolve dependencies by type.</summary>
+            <returns>The resolved dependency instance.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.DesignMode">
@@ -4937,7 +4937,7 @@ var secondFetch = DependencyService.Get<IDependencyTest> (DependencyFetchTarget.
             <remarks>This class is managed by the Xamarin.Forms platform to inform the developer when the application is being run in a previewer.</remarks>
         </member>
         <member name="P:Xamarin.Forms.DesignMode.IsDesignModeEnabled">
-            <summary>Indicates whether the application is being run in either a designer or previewer.</summary>
+            <summary>Indicates whether the application is being run in a previewer.</summary>
             <value>
                 <see langword="true" /> if the application is being run in a previewer. <see langword="false" /> if the application is being run on a device or emulator.</value>
             <remarks>To be added.</remarks>
@@ -5455,12 +5455,12 @@ var editor = new Editor {
             </remarks>
         </member>
         <member name="P:Xamarin.Forms.Editor.AutoSize">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <summary>Gets or sets a value that controls whether the editor will change size to accommodate input as the user enters it.</summary>
+            <value>Whether the editor will change size to accommodate input as the user enters it.</value>
+            <remarks>Automatic resizing is turned off by default.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Editor.AutoSizeProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the property that controls whether the editor will change size to accommodate input as the user enters it.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="E:Xamarin.Forms.Editor.Completed">
@@ -5545,7 +5545,7 @@ var editor = new Editor {
             <remarks />
         </member>
         <member name="M:Xamarin.Forms.Editor.UpdateAutoSizeOption">
-            <summary>To be added.</summary>
+            <summary>For internal use by the Xamarin.Forms platform.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Editor.Xamarin#Forms#Internals#IFontElement#FontSizeDefaultValueCreator">
@@ -5578,14 +5578,14 @@ var editor = new Editor {
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.EditorAutoSizeOption">
-            <summary>To be added.</summary>
+            <summary>Enumerates values that control whether an editor will change size to accommodate input as the user enters it.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.EditorAutoSizeOption.Disabled">
-            <summary>To be added.</summary>
+            <summary>Automatic resizing is not enabled. This is the default value.</summary>
         </member>
         <member name="F:Xamarin.Forms.EditorAutoSizeOption.TextChanges">
-            <summary>To be added.</summary>
+            <summary>Automatic resizing is enabled.</summary>
         </member>
         <member name="T:Xamarin.Forms.Effect">
             <summary>A collection of styles and properties that can be added to an element at run time.</summary>
@@ -5933,9 +5933,7 @@ var editor = new Editor {
             <remarks>
                 <para>Entry is a single line text entry. It is best used for collecting small discrete pieces of information, like usernames and passwords.</para>
                 <example>
-                    <para>
-                The following example creates a new username and password set of entries.
-                </para>
+                    <para>The following example creates a new username and password set of entries.</para>
                     <code lang="C#"><![CDATA[
 View CreateLoginForm ()
 {
@@ -5953,36 +5951,8 @@ View CreateLoginForm ()
   };
 }
             ]]></code>
-                    <para>The FormsGallery sample, which can be found on the <format type="text/html"><a href="http://developer.xamarin.com/samples/tag/Xamarin.Forms/" target="_blank">Sample Applications</a></format> page, has an EntryDemoPage.cs file. This file contains a longer and more complicated example.</para>
+                    <para>The FormsGallery sample, which can be found on the <format type="text/html"><a href="http://developer.xamarin.com/samples/tag/Xamarin.Forms/" target="_blank">Sample Applications</a></format> page, has an EntryDemoPage.cs file. This file contains a more complete example.</para>
                 </example>
-                <para>XAML for Xamarin.Forms supports the following properties for the <see cref="T:Xamarin.Forms.Entry" /> class:</para>
-                <list type="table">
-                    <listheader>
-                        <term>Property</term>
-                        <description>Value</description>
-                    </listheader>
-                    <item>
-                        <term>IsPassword</term>
-                        <description>
-                            <c>true</c> to indicate that the <see cref="T:Xamarin.Forms.Entry" /> is a password field. Otherwise, <c>false</c>.</description>
-                    </item>
-                    <item>
-                        <term>Placeholder</term>
-                        <description>The default text that will appear in the control.</description>
-                    </item>
-                    <item>
-                        <term>Text</term>
-                        <description>
-                            <para>The initial text that will appear in the entry.</para>
-                        </description>
-                    </item>
-                    <item>
-                        <term>TextColor</term>
-                        <description>
-                            <para>A color specification, with or without the prefix, "Color". For example, "Color.Red" and "Red" both specify the color red.</para>
-                        </description>
-                    </item>
-                </list>
                 <para>
                     <img href="xamarin-media/Xamarin.Forms/_images/Entry.TripleScreenShot.png" />
                 </para>
@@ -6033,22 +6003,23 @@ View CreateLoginForm ()
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Entry.IsPassword">
-            <summary>Gets or sets a value that indicates if the entry should visually obscure typed text. This is a bindable property.</summary>
+            <summary>Gets or sets a value that indicates if the entry should visually obscure typed text.</summary>
             <value>
                 <see langword="true" /> if the element is a password box; otherwise, <see langword="false" />. Default value is <see langword="false" />.</value>
             <remarks>Toggling this value does not reset the contents of the entry, therefore it is advisable to be careful about setting IsPassword to false, as it may contain sensitive information.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Entry.IsPasswordProperty">
-            <summary>Identifies the IsPassword bindable property.</summary>
+            <summary>Backing store for the IsPassword property.</summary>
             <remarks />
         </member>
         <member name="P:Xamarin.Forms.Entry.IsTextPredictionEnabled">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets a value that controls whether text prediction and automatic text correction is on or off.</summary>
+            <value>
+                <see langword="true" /> if text correction is on. Otherwise, <see langword="false" />.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Entry.IsTextPredictionEnabledProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Entry.IsTextPredictionEnabled" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Entry.On``1">
@@ -6058,7 +6029,7 @@ View CreateLoginForm ()
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Entry.Placeholder">
-            <summary>Gets or sets the placeholder text shown when the entry <see cref="P:Xamarin.Forms.Entry.Text" /> is null or empty. This is a bindable property.</summary>
+            <summary>Gets or sets the placeholder text shown when the entry <see cref="P:Xamarin.Forms.Entry.Text" /> is null or empty.</summary>
             <value>The placeholder text shown when <see cref="P:Xamarin.Forms.Entry.Text" /> is null or empty. The default value is <see langword="null" />.</value>
             <remarks />
         </member>
@@ -6072,34 +6043,34 @@ View CreateLoginForm ()
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Entry.PlaceholderProperty">
-            <summary>Identifies the Placeholder bindable property.</summary>
+            <summary>Backing store for the Placeholder property.</summary>
             <remarks />
         </member>
         <member name="P:Xamarin.Forms.Entry.ReturnCommand">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the command to run when the user returns the input.</summary>
+            <value>The command to run.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Entry.ReturnCommandParameter">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the parameter for the <see cref="P:Xamarin.Forms.Entry.ReturnCommand" />.</summary>
+            <value>Parameter for the <see cref="P:Xamarin.Forms.Entry.ReturnCommand" /></value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Entry.ReturnCommandParameterProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Entry.ReturnCommandParameter" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Entry.ReturnCommandProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Entry.ReturnCommand" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Entry.ReturnType">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets an enumeration value that controls the appearance of the return button.</summary>
+            <value>An enumeration value that controls the appearance of the return button.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Entry.ReturnTypeProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Entry.ReturnType" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Entry.SendCompleted">
@@ -6107,7 +6078,7 @@ View CreateLoginForm ()
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Entry.Text">
-            <summary>Gets or sets the text of the entry. This is a bindable property.</summary>
+            <summary>Gets or sets the text of the entry.</summary>
             <value>A string containing the text of the entry. The default value is <see langword="null" />.</value>
             <remarks>Setting this property will cause the <see cref="E:Xamarin.Forms.Entry.ValueChanged" /> event to be emitted.</remarks>
         </member>
@@ -6116,16 +6087,16 @@ View CreateLoginForm ()
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Entry.TextColor">
-            <summary>Gets or sets the <see cref="T:Xamarin.Forms.Color" /> for the text of the Entry. This is a bindable property.</summary>
+            <summary>Gets or sets the <see cref="T:Xamarin.Forms.Color" /> for the text of the Entry.</summary>
             <value>The <see cref="T:Xamarin.Forms.Color" /> of the text.</value>
             <remarks />
         </member>
         <member name="F:Xamarin.Forms.Entry.TextColorProperty">
-            <summary>Identifies the TextColor bindable property.</summary>
+            <summary>Backing store for the TextColor property.</summary>
             <remarks />
         </member>
         <member name="F:Xamarin.Forms.Entry.TextProperty">
-            <summary>Identifies the Text bindable property.</summary>
+            <summary>Backing store for the Text property.</summary>
             <remarks />
         </member>
         <member name="M:Xamarin.Forms.Entry.Xamarin#Forms#Internals#IFontElement#FontSizeDefaultValueCreator">
@@ -7178,7 +7149,7 @@ button.Effects.Add (Effect.Resolve ("com.YourCompany.ShadowEffect"));]]></code>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.FormattedString.OnBindingContextChanged">
-            <summary>To be added.</summary>
+            <summary>Method that is called when the binding context is changed.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.FormattedString.op_Explicit(Xamarin.Forms.FormattedString)~System.String">
@@ -9007,7 +8978,7 @@ Debug.WriteLine (Object.ReferenceEquals (modalPage, poppedPage)); //prints "true
             <remarks>The constructor of this class is internal. Xamarin.Forms does not provide any renderer for InputView base class.</remarks>
         </member>
         <member name="P:Xamarin.Forms.InputView.IsSpellCheckEnabled">
-            <summary>Gets or sets a value that controls whether spellcheckin is enabled.</summary>
+            <summary>Gets or sets a value that controls whether spellchecking is enabled.</summary>
             <value>
                 <see langword="true" /> if spellchecking is enabled. Otherwise <see langword="false" />.</value>
             <remarks>To be added.</remarks>
@@ -9027,7 +8998,7 @@ Debug.WriteLine (Object.ReferenceEquals (modalPage, poppedPage)); //prints "true
         </member>
         <member name="P:Xamarin.Forms.InputView.MaxLength">
             <summary>Gets or sets the maximum allowed length of input.</summary>
-            <value>An integer in the interval [0,<c>int.MaxValue</c>]. A value of zero indicates that there is no limit on the number of characters that may be entered.</value>
+            <value>An integer in the interval [0,<c>int.MaxValue</c>]. The default value is <c>Int.MaxValue</c>.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.InputView.MaxLengthProperty">
@@ -9709,7 +9680,7 @@ void SetupView()
             <remarks>To be added.</remarks>
         </member>
         <member name="E:Xamarin.Forms.IWebViewController.EvaluateJavaScriptRequested">
-            <summary>To be added.</summary>
+            <summary>For internal use by platform renderers.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="E:Xamarin.Forms.IWebViewController.GoBackRequested">
@@ -9796,26 +9767,26 @@ void SetupView()
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.KeyboardFlags">
-            <summary>Flagging enumeration for Keyboard options such as Capitalization, Spellcheck, and Suggestions.</summary>
+            <summary>Enumberates keyboard option flags that controls capitalization, spellcheck, and suggestion behavior.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.KeyboardFlags.All">
-            <summary>Capitalize the first words of sentences, and perform spellcheck and offer suggested word completions on text that the user enters.</summary>
+            <summary>Capitalize the first leter of the first words of sentences, perform spellcheck, and offer suggested word completions on text that the user enters.</summary>
         </member>
         <member name="F:Xamarin.Forms.KeyboardFlags.CapitalizeCharacter">
-            <summary>To be added.</summary>
+            <summary>Indicates that every character will be automatically capitalized.</summary>
         </member>
         <member name="F:Xamarin.Forms.KeyboardFlags.CapitalizeNone">
-            <summary>To be added.</summary>
+            <summary>Indicates that nothing will be automatically capitalized.</summary>
         </member>
         <member name="F:Xamarin.Forms.KeyboardFlags.CapitalizeSentence">
-            <summary>Capitalize the first words of sentences.</summary>
+            <summary>Indicates that the first letters of the first words of each sentence will be automatically capitalized.</summary>
         </member>
         <member name="F:Xamarin.Forms.KeyboardFlags.CapitalizeWord">
-            <summary>To be added.</summary>
+            <summary>Indicates that the first letter of each word will be automatically capitalized.</summary>
         </member>
         <member name="F:Xamarin.Forms.KeyboardFlags.None">
-            <summary>No special features provided by the keyboard.</summary>
+            <summary>Indicates that nothing will be automatically capitalized.</summary>
         </member>
         <member name="F:Xamarin.Forms.KeyboardFlags.Spellcheck">
             <summary>Perform spellcheck on text that the user enters.</summary>
@@ -9938,13 +9909,13 @@ public class App : Application
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Label.GetChildElements(Xamarin.Forms.Point)">
-            <param name="point">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="point">The point under which to check for child elements.</param>
+            <summary>Returns the child elements that are underneath <paramref name="point" />.</summary>
+            <returns>The child elements that are underneath <paramref name="point" />.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Label.HorizontalTextAlignment">
-            <summary>Gets or sets the horizontal alignement of the Text property. This is a bindable property.</summary>
+            <summary>Gets or sets the horizontal alignment of the Text property. This is a bindable property.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
@@ -9962,12 +9933,12 @@ public class App : Application
             <remarks />
         </member>
         <member name="P:Xamarin.Forms.Label.LineHeight">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets a value that controls the height of the lines that contains the label text.</summary>
+            <value>A value, in device independent units, that controls the height of the lines that contains the label text</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Label.LineHeightProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Label.LineHeight" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Label.On``1">
@@ -9977,7 +9948,7 @@ public class App : Application
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Label.OnBindingContextChanged">
-            <summary>To be added.</summary>
+            <summary>Method that is called when the binding context is changed.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Label.Text">
@@ -10950,12 +10921,13 @@ ListView CreateListView()
             <remarks />
         </member>
         <member name="P:Xamarin.Forms.ListView.SelectionMode">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <summary>Gets or sets a value that controls whether and how many items can be selected.</summary>
+            <value>
+                <see cref="F:Xamarin.Forms.ListViewSelectionMode.None" /> if no selections can be made. <see cref="F:Xamarin.Forms.ListViewSelectionMode.Single" /> if one selection can be made.</value>
+            <remarks>If an item is selected, changing <see cref="P:Xamarin.Forms.ListView.SelectionMode" /> to <see cref="F:Xamarin.Forms.ListViewSelectionMode.None" /> will cause the item to be deselected, and <see cref="E:Xamarin.Forms.ListView.ItemSelected" /> to be raised with a <see langword="null" /> item value.</remarks>
         </member>
         <member name="F:Xamarin.Forms.ListView.SelectionModeProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.ListView.SelectionMode" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.ListView.SendCellAppearing(Xamarin.Forms.Cell)">
@@ -11047,14 +11019,14 @@ ListView CreateListView()
             <summary>Indicates that for every item in the List View's <see cref="P:Xamarin.Forms.ItemsView{TVisual}.ItemsSource" /> property, a single unique element will be constructed from the DataTemplate.</summary>
         </member>
         <member name="T:Xamarin.Forms.ListViewSelectionMode">
-            <summary>To be added.</summary>
+            <summary>Enumerates values that control whether items in a list view can or cannot be selected.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.ListViewSelectionMode.None">
-            <summary>To be added.</summary>
+            <summary>Indicates that items cannot be selected.</summary>
         </member>
         <member name="F:Xamarin.Forms.ListViewSelectionMode.Single">
-            <summary>To be added.</summary>
+            <summary>Indicates that a single item can be selected.</summary>
         </member>
         <member name="T:Xamarin.Forms.MasterBehavior">
             <summary>Enumerates values that control how detail content is displayed in a master-detail page.</summary>
@@ -12278,9 +12250,9 @@ public class MyPage : NavigationPage
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.OnIdiom`1">
-            <typeparam name="T">To be added.</typeparam>
-            <summary>Provides idiom-specific implementation of <paramref name="T" /> for the current target idiom.</summary>
-            <remarks />
+            <typeparam name="T">The type for which to get a platform-specific implementation.</typeparam>
+            <summary>Provides idiom-specific value for <paramref name="T" /> for the current target idiom.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="C:Xamarin.Forms.OnIdiom`1">
             <summary>Initializes a new instance of OnIdiom</summary>
@@ -12288,7 +12260,7 @@ public class MyPage : NavigationPage
         </member>
         <member name="P:Xamarin.Forms.OnIdiom`1.Desktop">
             <summary>Gets or sets the value applied on desktop systems.</summary>
-            <value>To be added.</value>
+            <value>The value applied on desktop systems.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.OnIdiom`1.op_Implicit(`0Xamarin`0.`0Forms`0.`0OnIdiom`0{`0T`0})~`0T`0">
@@ -12299,22 +12271,22 @@ public class MyPage : NavigationPage
         </member>
         <member name="P:Xamarin.Forms.OnIdiom`1.Phone">
             <summary>Gets or sets the value applied on Phone-like devices.</summary>
-            <value>A T.</value>
-            <remarks />
+            <value>The value applied on Phone-like devices.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.OnIdiom`1.Tablet">
             <summary>Gets or sets the value applied on Tablet-like devices.</summary>
-            <value>A T.</value>
-            <remarks />
+            <value>The value applied on Tablet-like devices.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.OnIdiom`1.TV">
             <summary>Gets or sets the value applied on TV-like devices.</summary>
-            <value>A T.</value>
-            <remarks />
+            <value>The value applied on TV-like devices.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.OnIdiom`1.Watch">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the value applied on watch-like devices.</summary>
+            <value>The value applied on watch-like devices.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.OnPlatform`1">
@@ -14142,26 +14114,26 @@ button.Effects.Add (Effect.Resolve ("com.YourCompany.ShadowEffect"));]]></code>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.ReturnType">
-            <summary>To be added.</summary>
+            <summary>Enumerates return button styles.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.ReturnType.Default">
-            <summary>To be added.</summary>
+            <summary>Indicates the default style on the platform.</summary>
         </member>
         <member name="F:Xamarin.Forms.ReturnType.Done">
-            <summary>To be added.</summary>
+            <summary>Indicates a "Done" button.</summary>
         </member>
         <member name="F:Xamarin.Forms.ReturnType.Go">
-            <summary>To be added.</summary>
+            <summary>Indicates a "Go" button.</summary>
         </member>
         <member name="F:Xamarin.Forms.ReturnType.Next">
-            <summary>To be added.</summary>
+            <summary>Indicates a "Next" button.</summary>
         </member>
         <member name="F:Xamarin.Forms.ReturnType.Search">
-            <summary>To be added.</summary>
+            <summary>Indicates a "Search" button.</summary>
         </member>
         <member name="F:Xamarin.Forms.ReturnType.Send">
-            <summary>To be added.</summary>
+            <summary>Indicates a "Search" button.</summary>
         </member>
         <member name="T:Xamarin.Forms.RoutingEffect">
             <summary>Platform-independent effect that wraps an inner effect, which is usually platform-specific.</summary>
@@ -14234,17 +14206,17 @@ button.Effects.Add (Effect.Resolve ("com.YourCompany.ShadowEffect"));]]></code>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.ScrollBarVisibility">
-            <summary>To be added.</summary>
+            <summary>Enumerates conditions under which scroll bars will be visible.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.ScrollBarVisibility.Always">
-            <summary>To be added.</summary>
+            <summary>Indicates that scroll bars will be visible, even when the content fits on the control.</summary>
         </member>
         <member name="F:Xamarin.Forms.ScrollBarVisibility.Default">
-            <summary>To be added.</summary>
+            <summary>Indicates the default scroll bar behavior for the platform.</summary>
         </member>
         <member name="F:Xamarin.Forms.ScrollBarVisibility.Never">
-            <summary>To be added.</summary>
+            <summary>Indicates that scroll bars are not visible, even if the content does not fit on the control.</summary>
         </member>
         <member name="T:Xamarin.Forms.ScrolledEventArgs">
             <summary>Arguments for the event that is raised when a window is scrolled.</summary>
@@ -14419,12 +14391,12 @@ MainPage = new ContentPage
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.ScrollView.HorizontalScrollBarVisibility">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets a value that controls when the horizontal scroll bar is visible.</summary>
+            <value>A value that controls when the horizontal scroll bar is visible.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.ScrollView.HorizontalScrollBarVisibilityProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.ScrollView.HorizontalScrollBarVisibility" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.ScrollView.LayoutChildren(System.Double,System.Double,System.Double,System.Double)">
@@ -14512,12 +14484,12 @@ MainPage = new ContentPage
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.ScrollView.VerticalScrollBarVisibility">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets a value that controls when the vertical scroll bar is visible.</summary>
+            <value>A value that controls when the vertical scroll bar is visible.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.ScrollView.VerticalScrollBarVisibilityProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.ScrollView.VerticalScrollBarVisibility" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.SearchBar">
@@ -15086,12 +15058,12 @@ namespace FormsGallery
             <remarks />
         </member>
         <member name="P:Xamarin.Forms.Slider.MaximumTrackColor">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the color of the portion of the slider track that contains the maximum value of the slider.</summary>
+            <value>Thhe color of the portion of the slider track that contains the maximum value of the slider.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Slider.MaximumTrackColorProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Slider.MaximumTrackColor" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Slider.Minimum">
@@ -15100,40 +15072,40 @@ namespace FormsGallery
             <remarks />
         </member>
         <member name="F:Xamarin.Forms.Slider.MinimumProperty">
-            <summary>Identifies the Minimum bindable property.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Slider.Minimum" /> property.</summary>
             <remarks />
         </member>
         <member name="P:Xamarin.Forms.Slider.MinimumTrackColor">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the color of the portion of the slider track that contains the minimum value of the slider.</summary>
+            <value>Thhe color of the portion of the slider track that contains the minimum value of the slider.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Slider.MinimumTrackColorProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Slider.MinimumTrackColor" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Slider.On``1">
-            <typeparam name="T">To be added.</typeparam>
+            <typeparam name="T">The platform for which to get a platform-specific instance.</typeparam>
             <summary>Returns the platform-specific instance of this <see cref="T:Xamarin.Forms.Slider" />, on which a platform-specific method may be called.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Slider.ThumbColor">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the color of the slider thumb button.</summary>
+            <value>The color of the slider thumb button.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Slider.ThumbColorProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Slider.ThumbColor" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Slider.ThumbImage">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the image to use for the slider thumb button.</summary>
+            <value>The image to use for the slider thumb button.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Slider.ThumbImageProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Slider.ThumbImage" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Slider.Value">
@@ -15150,7 +15122,7 @@ namespace FormsGallery
             <remarks />
         </member>
         <member name="T:Xamarin.Forms.Span">
-            <summary>Represents a part of a FormattedString.</summary>
+            <summary>Represents a section of a <see cref="T:Xamarin.Forms.FormattedString" />.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="C:Xamarin.Forms.Span">
@@ -15163,7 +15135,7 @@ namespace FormsGallery
             <remarks>Not supported on WindowsPhone.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.BackgroundColorProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.BackgroundColor" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.Font">
@@ -15177,7 +15149,7 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.FontAttributesProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.FontAttributes" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.FontFamily">
@@ -15186,11 +15158,11 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.FontFamilyProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.FontFamily" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.FontProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.Font" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.FontSize">
@@ -15199,7 +15171,7 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.FontSizeProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.FontSize" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.ForegroundColor">
@@ -15208,7 +15180,7 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.ForegroundColorProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.ForegroundColor" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.LineHeight">
@@ -15221,12 +15193,12 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.Style">
-            <summary>To be added.</summary>
+            <summary>Gets or sets the Style to apply to the span.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.StyleProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.Style" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.Text">
@@ -15235,16 +15207,16 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Span.TextColor">
-            <summary>To be added.</summary>
+            <summary>Gets or sets the text color.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.TextColorProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.TextColor" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Span.TextProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="T:Xamarin.Forms.Span.Text" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.Span.Xamarin#Forms#Internals#IFontElement#FontSizeDefaultValueCreator">
@@ -15843,12 +15815,12 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="P:Xamarin.Forms.Switch.OnColor">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
+            <summary>Gets or sets the color of the switch when it is in the "On" position.</summary>
+            <value>The color of the switch when it is in the "On" position.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Switch.OnColorProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the <see cref="P:Xamarin.Forms.Switch.OnColor" /> property.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="E:Xamarin.Forms.Switch.Toggled">
@@ -16550,7 +16522,7 @@ public class App : Application
             <summary>(Unused) Indicates that Xamarin.Forms is running on an unsupported device.</summary>
         </member>
         <member name="F:Xamarin.Forms.TargetIdiom.Watch">
-            <summary>To be added.</summary>
+            <summary>Indicates that Xamarin.Forms is running on a Tizen watch.</summary>
         </member>
         <member name="T:Xamarin.Forms.TargetPlatform">
             <summary>Indicates the kind of OS Xamarin.Forms is currently working on.</summary>
@@ -17894,7 +17866,7 @@ var beeroclock = new TimePicker () { Time = new TimeSpan (17,0,0) };
             <altmember cref="P:Xamarin.Forms.VisualElement.HeightRequest" />
         </member>
         <member name="M:Xamarin.Forms.VisualElement.ChangeVisualState">
-            <summary>To be added.</summary>
+            <summary>For internal use by the Xamarin.Forms platform.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="E:Xamarin.Forms.VisualElement.ChildrenReordered">
@@ -18874,13 +18846,13 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.WebView.EvaluateJavaScriptAsync(System.String)">
-            <param name="script">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
+            <param name="script">The script to evaluate.</param>
+            <summary>On platforms that support JavaScript evaluation, evaluates <paramref name="script" />.</summary>
+            <returns>A task that contains the result of the evaluation as a string.</returns>
+            <remarks>Native JavaScript evaluation is supported neither on Tizen nor GTK (Linux).</remarks>
         </member>
         <member name="E:Xamarin.Forms.WebView.EvaluateJavaScriptRequested">
-            <summary>To be added.</summary>
+            <summary>For internal use by the Xamarin.Forms platform.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.WebView.GoBack">
@@ -23612,7 +23584,7 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="T:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.SearchBar">
-            <summary>Provides control over the spellchecker on searchbars.</summary>
+            <summary>Provides control over the spellchecker on search bars.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.SearchBar.DisableSpellCheck(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.SearchBar})">
@@ -23627,21 +23599,21 @@ namespace FormsGallery
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.SearchBar.GetIsSpellCheckEnabled(Xamarin.Forms.BindableObject)">
             <param name="element">The search bar element.</param>
-            <summary>Returns a Boolean value that tells whether the spell checker is enabled.</summary>
+            <summary>Returns a Boolean value that tells whether the spellchecker is enabled.</summary>
             <returns>
                 <see langword="true" /> if the spellchecker is enabled. Otherwise, <see langword="false" />.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.SearchBar.GetIsSpellCheckEnabled(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.SearchBar})">
             <param name="config">The platform configuration for the search bar element.</param>
-            <summary>Returns a Boolean value that tells whether the spell checker is enabled.</summary>
+            <summary>Returns a Boolean value that tells whether the spellchecker is enabled.</summary>
             <returns>
                 <see langword="true" /> if the spellchecker is enabled. Otherwise, <see langword="false" />.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.SearchBar.IsSpellCheckEnabled(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.SearchBar})">
             <param name="config">The platform configuration for the search bar element.</param>
-            <summary>Returns a Boolean value that tells whether the spell checker is enabled.</summary>
+            <summary>Returns a Boolean value that tells whether the spellchecker is enabled.</summary>
             <returns>
                 <see langword="true" /> if the spellchecker is enabled. Otherwise, <see langword="false" />.</returns>
             <remarks>To be added.</remarks>
@@ -23755,71 +23727,71 @@ namespace FormsGallery
             <summary>Indicates that the toolbar should be placed at the top of the screen.</summary>
         </member>
         <member name="T:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement">
-            <summary>Provides control over the legacy color mode on visual elements.</summary>
+            <summary>Provides access to platform-specific features of visual elements on the Windows platform.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.AccessKeyHorizontalOffsetProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the attached property that gets and sets the horizontal offset from the nominal position to use for displaying the access key.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.AccessKeyPlacementProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the attached property that gets and sets the nominal position to use for displaying the access key.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.AccessKeyProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the attached property that gets and sets value to display in an access key.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.AccessKeyVerticalOffsetProperty">
-            <summary>To be added.</summary>
+            <summary>Backing store for the attached property that gets and sets the vertical offset from the nominal position to use for displaying the access key.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKey(Xamarin.Forms.BindableObject)">
-            <param name="element">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="element">The element for which to get the access key.</param>
+            <summary>Returns the value that the access key displays.</summary>
+            <returns>The value that the access key displays.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKey(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement})">
-            <param name="config">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to get the access key.</param>
+            <summary>Returns the value that the access key displays.</summary>
+            <returns>The value that the access key displays.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKeyHorizontalOffset(Xamarin.Forms.BindableObject)">
-            <param name="element">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="element">The element for which to get the horizontal offset.</param>
+            <summary>Gets the horizontal offset from the nominal position to use for displaying the access key.</summary>
+            <returns>The horizontal offset from the nominal position to use for displaying the access key.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKeyHorizontalOffset(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement})">
-            <param name="config">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to get the horizontal offset.</param>
+            <summary>Gets the horizontal offset from the nominal position to use for displaying the access key.</summary>
+            <returns>The horizontal offset from the nominal position to use for displaying the access key.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKeyPlacement(Xamarin.Forms.BindableObject)">
-            <param name="element">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="element">The element for which to get the access key placement.</param>
+            <summary>Gets the nominal position to use for displaying the access key.</summary>
+            <returns>The nominal position to use for displaying the access key.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKeyPlacement(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement})">
-            <param name="config">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to get the access key placement.</param>
+            <summary>Gets the nominal position to use for displaying the access key.</summary>
+            <returns>The nominal position to use for displaying the access key.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKeyVerticalOffset(Xamarin.Forms.BindableObject)">
-            <param name="element">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="element">The element for which to get the vertical offset.</param>
+            <summary>Gets the vertical offset from the nominal position to use for displaying the access key.</summary>
+            <returns>The vertical offset from the nominal position to use for displaying the access key.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetAccessKeyVerticalOffset(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement})">
-            <param name="config">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to get the vertical offset.</param>
+            <summary>Gets the vertical offset from the nominal position to use for displaying the access key.</summary>
+            <returns>The vertical offset from the nominal position to use for displaying the access key.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.GetIsLegacyColorModeEnabled(Xamarin.Forms.BindableObject)">
@@ -23841,55 +23813,55 @@ namespace FormsGallery
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKey(Xamarin.Forms.BindableObject,System.String)">
-            <param name="element">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
+            <param name="element">The element for which to set the access key string.</param>
+            <param name="value">The new access key value.</param>
+            <summary>Sets the value that the access key displays.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKey(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement},System.String)">
-            <param name="config">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to set the access key string.</param>
+            <param name="value">The new access key value.</param>
+            <summary>Sets the value that the access key displays.</summary>
+            <returns>A fluent object on which the developer may make furter method calls.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKeyHorizontalOffset(Xamarin.Forms.BindableObject,System.Double)">
-            <param name="element">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
+            <param name="element">The element for which to set the horizontal access key offset.</param>
+            <param name="value">The new offset value.</param>
+            <summary>Sets the horizontal offset from the nominal position to use for displaying the access key.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKeyHorizontalOffset(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement},System.Double)">
-            <param name="config">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to set the horizontal access key offset.</param>
+            <param name="value">The new offset value.</param>
+            <summary>Sets the horizontal offset from the nominal position to use for displaying the access key.</summary>
+            <returns>A fluent object on which the developer may make furter method calls.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKeyPlacement(Xamarin.Forms.BindableObject,Xamarin.Forms.AccessKeyPlacement)">
-            <param name="element">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
+            <param name="element">The element for which to set the horizontal access key placement.</param>
+            <param name="value">The new placement value.</param>
+            <summary>Sets nominal position to use for displaying the access key.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKeyPlacement(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement},Xamarin.Forms.AccessKeyPlacement)">
-            <param name="config">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to set the new placement.</param>
+            <param name="value">The new placement value.</param>
+            <summary>Sets nominal position to use for displaying the access key.</summary>
+            <returns>A fluent object on which the developer may make furter method calls.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKeyVerticalOffset(Xamarin.Forms.BindableObject,System.Double)">
-            <param name="element">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
+            <param name="element">The element for which to set the vertical access key offset.</param>
+            <param name="value">The new offset value.</param>
+            <summary>Sets the vertical offset from the nominal position to use for displaying the access key.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetAccessKeyVerticalOffset(Xamarin.Forms.IPlatformElementConfiguration{Xamarin.Forms.PlatformConfiguration.Windows,Xamarin.Forms.VisualElement},System.Double)">
-            <param name="config">To be added.</param>
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
+            <param name="config">The platform configuration for the element for which to set the vertical access key offset.</param>
+            <param name="value">The new offset value.</param>
+            <summary>Sets the vertical offset from the nominal position to use for displaying the access key.</summary>
+            <returns>A fluent object on which the developer may make furter method calls.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:Xamarin.Forms.PlatformConfiguration.WindowsSpecific.VisualElement.SetIsLegacyColorModeEnabled(Xamarin.Forms.BindableObject,System.Boolean)">

@@ -42,8 +42,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DryIoc, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DryIoc.dll.3.0.1\lib\net45\DryIoc.dll</HintPath>
+    <Reference Include="DryIoc, Version=2.12.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DryIoc.dll.2.12.10\lib\net45\DryIoc.dll</HintPath>
     </Reference>
     <Reference Include="Flex, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Forms.Controls.FlexButton.0.7.0\lib\netstandard1.0\Flex.dll</HintPath>

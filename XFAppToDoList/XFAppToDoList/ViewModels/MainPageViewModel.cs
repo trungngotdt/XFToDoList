@@ -19,7 +19,7 @@ namespace XFAppToDoList.ViewModels
     {
         private int countItemSelect;
 
-
+        
         private IPageDialogService getPageDialogService;
         private string title;
         private bool isDeleteMode;
@@ -52,7 +52,7 @@ namespace XFAppToDoList.ViewModels
             get
             {
                 listToDo = listToDo ?? new ObservableCollection<Jobs>();
-                
+               
                 return listToDo;
             }
             set => listToDo = value;
@@ -65,7 +65,8 @@ namespace XFAppToDoList.ViewModels
         public bool IsEnableBtnDeleteSelect { get => isEnableBtnDeleteSelect; set {isEnableBtnDeleteSelect = value; RaisePropertyChanged("IsEnableBtnDeleteSelect"); } }
         public bool IsNormalMode { get => isNormalMode; set { isNormalMode = value; RaisePropertyChanged("IsNormalMode"); } }
 
-        public bool IsCheckBtnDeleteAll { get => isCheckBtnDeleteAll; set {isCheckBtnDeleteAll = value;Debug.WriteLine("KKKKKKKK"); RaisePropertyChanged("IsCheckBtnDeleteAll"); } }
+        public bool IsCheckBtnDeleteAll { get => isCheckBtnDeleteAll;
+            set {isCheckBtnDeleteAll = value;Debug.WriteLine("KKKKKKKK"); RaisePropertyChanged("IsCheckBtnDeleteAll"); } }
 
         public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService)

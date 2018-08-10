@@ -2,80 +2,77 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFAppToDoList.Views.MainPage"
+             xmlns:custom="clr-namespace:XFAppToDoList.CustomControl"
              xmlns:i="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              Title="{Binding GetTitle}"
              xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
-
-    <!--
-    <OnPlatform x:TypeArguments="View">
-        <On Platform="Android">
-            <Label Text="Android"/>
-        </On>
-        <On Platform="WPF">
-            
-        </On>
-    </OnPlatform>
+<!--
+     <StackLayout BackgroundColor="Aqua">
+        <Button Image="https://png.icons8.com/material/48/000000/checkmark.png"
+                BackgroundColor="White" 
+                WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <custom:ToggleButton Icon="https://png.icons8.com/ios/50/000000/checkmark.png" 
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             HorizontalOptions="EndAndExpand"
+                             FillColorCheck="Red"
+                             FillColorUnCheck="White"
+                             BorderRadius="20"/>
+    </StackLayout>
     -->
+   
 
 
 
     <AbsoluteLayout >
 
-            <StackLayout Orientation="Horizontal" 
-                         AbsoluteLayout.LayoutBounds="0,0,1,0.1"
-                         AbsoluteLayout.LayoutFlags="HeightProportional,WidthProportional"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand">
-                <Label Text="All"
-                       Margin="0,20,0,0"
-                       FontSize="Medium"
-                       VerticalOptions="CenterAndExpand"
-                       HorizontalOptions="StartAndExpand"
-                       IsVisible="{Binding IsDeleteMode}"/>
-                <Entry HeightRequest="100"
-                   WidthRequest="100"/>
-            <flex:FlexButton x:Name="BtnDeleteAll"                                 
-                                 IsVisible="{Binding IsDeleteMode}"
-                                 HeightRequest="30"
-                                
-                                 WidthRequest="30"
-                                 CornerRadius="38"
-                                 Margin="0,0,20,0"
-                                 ToggleMode="True"
-                                 Icon="https://png.icons8.com/ios/50/000000/checkmark.png"
-                                 ForegroundColor="#6279B8"
-                                 HighlightForegroundColor="#ffffff"
-                                 BackgroundColor="White"
-                                 HighlightBackgroundColor="#6279B8"
-                                 BorderColor="#6279B8"
-                                 HighlightBorderColor="#49516F"
-                                 HorizontalOptions="EndAndExpand"/>
-            
+        <StackLayout Orientation="Horizontal" 
+                     AbsoluteLayout.LayoutBounds="0,0,1,0.1"
+                     AbsoluteLayout.LayoutFlags="HeightProportional,WidthProportional">
+            <Label Text="All"
+                   Margin="0,20,0,0"
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="StartAndExpand"
+                   IsVisible="{Binding IsDeleteMode}"/>
+            <custom:ToggleButton x:Name="BtnDeleteAll"                                 
+                             IsVisible="{Binding IsDeleteMode}"
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             BorderRadius="20"
+                             Checked="{Binding IsCheckBtnDeleteAll}"
+                             Margin="0,0,20,0"
+                             Icon="https://png.icons8.com/ios/20/000000/checkmark.png"
+                             FillColorCheck="DeepSkyBlue"
+                             FillColorUnCheck="White"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="EndAndExpand"/>
+
         </StackLayout>
         <StackLayout x:Name="ScLFooter"
                      BackgroundColor="Wheat"
                      Orientation="Horizontal" 
                      AbsoluteLayout.LayoutBounds="1,1,1,0.1"
                      AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
-            
+
             <Button x:Name="BtnCancel"
                     Text="Cancel"
                     Command="{Binding CommandBtnCancelPress}"
                     IsVisible="{Binding IsDeleteMode}"
                     HorizontalOptions="CenterAndExpand"/>
-            
+
             <Button x:Name="BtnDeleteSelect"
                     Command="{Binding CommandBtnDeleteSelectPress}"
                     Text="Delete"
                     IsVisible="{Binding IsDeleteMode}"
                     HorizontalOptions="CenterAndExpand"/>
-            
+
             <Button x:Name="BtnAdd"
                     Text="Add"
                     IsVisible="{Binding IsNormalMode}"
                     Command="{Binding CommandAddJob}"
                     HorizontalOptions="CenterAndExpand"/>
-            
+
             <Button x:Name="BtnChoice"
                     Text="Choice"
                     IsVisible="{Binding IsNormalMode}"
@@ -88,7 +85,7 @@
                     CommandParameter="{x:Reference LsvToDo}"
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
-        
+
         <ScrollView AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
                     AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
             <ListView x:Name="LsvToDo" 
@@ -116,40 +113,32 @@
                                 <Label Text="{Binding Date}"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
+
+
+                                <custom:ToggleButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
+                                                     WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
+                                                     HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"
+                                                     Icon="https://png.icons8.com/ios/15/000000/checkmark.png"
+                                                     Checked="{Binding Available}"
+                                                     Margin="0,0,20,0"
+                                                     FillColorCheck="DeepSkyBlue"
+                                                     FillColorUnCheck="White"/>
                                 <!--
-                                 <Label Text="Status :"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"/>Icon="https://png.icons8.com/ios/50/000000/checkmark.png"
-                                <Switch VerticalOptions="CenterAndExpand"
-                                        HorizontalOptions="EndAndExpand"
-                                        IsToggled="{Binding Available}"/>
-                                -->
-                               
                                 <flex:FlexButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
                                                  WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
                                                  HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"
                                                  IsToggled="{Binding Available}"
                                                  CornerRadius="38"
-                                                 Margin="0,0,20,0"
+                                                 Margin="0,0,40,0"
                                                  ToggleMode="True"
-                                                 
+                                                 Icon="https://png.icons8.com/ios/50/000000/checkmark.png"
                                                  ForegroundColor="Black"
                                                  HighlightForegroundColor="Yellow"
                                                  BackgroundColor="White"
                                                  HighlightBackgroundColor= "Red"
                                                  BorderColor="White"
                                                  HighlightBorderColor="White"/>
-                                <!--
-                                     HorizontalOptions="Center"
-                                                 ToggleMode="True"
-                                                 BorderColor="Black"
-                                                 HighlightBorderColor="Black"
-                                                 ForegroundColor="Black"
-                                                 HighlightForegroundColor="Yellow"
-                                                 BackgroundColor="Red"
-                                                 HighlightBackgroundColor="White" />
-                                    -->
-
+                                -->
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -157,5 +146,6 @@
             </ListView>
         </ScrollView>
     </AbsoluteLayout>
-
+    
+    
 </ContentPage>

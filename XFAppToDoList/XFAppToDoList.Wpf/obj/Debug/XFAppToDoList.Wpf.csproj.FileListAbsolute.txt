@@ -98,6 +98,7 @@ C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\De
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\System.Xml.XPath.dll
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\DryIoc.dll
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\Flex.dll
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\MaterialDesignColors.dll
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\OpenTK.dll
@@ -144,4 +145,3 @@ C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\De
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.csproj.CopyComplete
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.exe
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.pdb
-C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\Flex.dll
