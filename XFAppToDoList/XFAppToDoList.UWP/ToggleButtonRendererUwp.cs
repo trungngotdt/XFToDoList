@@ -7,13 +7,8 @@ using Xamarin.Forms.Platform.UWP;
 using XFAppToDoList.CustomControl;
 using XFAppToDoList.UWP;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Shapes;
-using Windows.UI.Xaml.Media;
 using System.ComponentModel;
 using System.Diagnostics;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI;
-using Windows.UI.Xaml;
 
 [assembly: ExportRenderer(typeof(ToggleButton), typeof(ToggleButtonRendererUwp))]
 namespace XFAppToDoList.UWP

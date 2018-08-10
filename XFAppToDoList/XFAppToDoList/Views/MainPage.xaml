@@ -21,7 +21,6 @@
                              IsVisible="{Binding IsDeleteMode}"
                              HeightRequest="40"
                              WidthRequest="40"
-                             BorderRadius="20"
                              Checked="{Binding IsCheckBtnDeleteAll}"
                              Margin="0,0,20,0"
                              Icon="https://png.icons8.com/ios/20/000000/checkmark.png"
