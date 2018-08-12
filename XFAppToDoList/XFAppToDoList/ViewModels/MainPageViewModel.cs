@@ -17,6 +17,7 @@ namespace XFAppToDoList.ViewModels
 {
     public class MainPageViewModel : ViewModelBase //ContentPage
     {
+        #region field
         private int countItemSelect;
 
         
@@ -27,7 +28,10 @@ namespace XFAppToDoList.ViewModels
         private bool isNormalMode;
         private bool isCheckBtnDeleteAll;
         private DelegateCommand commandBtnDeleteSelectPress;
-        
+        private  DelegateCommand<Element> commandLsvToDoSizeChanged;
+       
+
+       
 
         
         private DelegateCommand commandBtnCancelPress;
@@ -36,17 +40,30 @@ namespace XFAppToDoList.ViewModels
         private DelegateCommand<ListView> commandClickBtnAbout;
         private DelegateCommand commandAddJob;
         private ObservableCollection<Jobs> listToDo;
+        
+        #endregion
+
+
+        #region Property
+
+        public DelegateCommand<Element> CommandLsvToDoSizeChanged =>
+            commandLsvToDoSizeChanged ?? (commandLsvToDoSizeChanged = new DelegateCommand<Element>(ExecuteCommandLsvToDoSizeChanged));
 
         public DelegateCommand CommandBtnChoicePressed =>
             commandBtnChoicePressed ?? (commandBtnChoicePressed = new DelegateCommand(ExecuteCommandBtnChoicePressed));
+
         public DelegateCommand CommandAddJob =>
             commandAddJob ?? (commandAddJob = new DelegateCommand(ExecuteCommandAddJob));
+
         public DelegateCommand<ListView> CommandClickBtnAbout =>
             commandClickBtnAbout ?? (commandClickBtnAbout = new DelegateCommand<ListView>(async (l) => { await ExecuteCommandPopUpAsync(l); }));
+
         public DelegateCommand CommandBtnCancelPress =>
             commandBtnCancelPress ?? (commandBtnCancelPress = new DelegateCommand(ExecuteCommandBtnCancelPress));
+
         public DelegateCommand CommandBtnDeleteSelectPress =>
              commandBtnDeleteSelectPress ?? ( commandBtnDeleteSelectPress = new DelegateCommand(ExecuteCommandBtnDeleteSelectPress));
+
         public ObservableCollection<Jobs> ListToDo
         {
             get
@@ -57,16 +74,24 @@ namespace XFAppToDoList.ViewModels
             }
             set => listToDo = value;
         }
+
         public DelegateCommand<object> CommandItemPressed =>
             commandItemPressed ?? (commandItemPressed = new DelegateCommand<object>(ExecuteCommandItemPressedAsync));
+
         public string GetTitle { get => title; set => title = value; }
+
         public IPageDialogService GetPageDialogService { get => getPageDialogService; set => getPageDialogService = value; }
+
         public bool IsDeleteMode { get => isDeleteMode; set { isDeleteMode = value; RaisePropertyChanged("IsDeleteMode"); } }
+
         public bool IsEnableBtnDeleteSelect { get => isEnableBtnDeleteSelect; set {isEnableBtnDeleteSelect = value; RaisePropertyChanged("IsEnableBtnDeleteSelect"); } }
+
         public bool IsNormalMode { get => isNormalMode; set { isNormalMode = value; RaisePropertyChanged("IsNormalMode"); } }
 
         public bool IsCheckBtnDeleteAll { get => isCheckBtnDeleteAll;
             set {isCheckBtnDeleteAll = value;Debug.WriteLine("KKKKKKKK"); RaisePropertyChanged("IsCheckBtnDeleteAll"); } }
+        #endregion
+
 
         public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService)
@@ -75,6 +100,7 @@ namespace XFAppToDoList.ViewModels
             
             getPageDialogService = pageDialogService;
             GetTitle = "Main Page";
+            
             ListToDo.Add(new Jobs("Job a", "Job", true, DateTime.Now));
             ListToDo.Add(new Jobs("Job b", "Job", false, DateTime.Now));
             ListToDo.Add(new Jobs("Job c", "Job", false, DateTime.Now));
@@ -88,9 +114,7 @@ namespace XFAppToDoList.ViewModels
                 ListToDo.Add(new Jobs($"Job {i}", "Job", false, DateTime.Now));
             }
         }
-
         
-
         /// <summary>
         /// Change Delete mode to Normal mode or Normal mode to Delete mode
         /// </summary>
@@ -126,7 +150,7 @@ namespace XFAppToDoList.ViewModels
                         i--;
                         count--;
                     }
-                }                              
+                }
             }
         }
 
@@ -208,6 +232,22 @@ namespace XFAppToDoList.ViewModels
                     throw;
                 }
             }
+        }
+
+        void ExecuteCommandLsvToDoSizeChanged(Element parameter)
+        {
+
+            if(Device.RuntimePlatform.Equals(Device.WPF))
+            {
+                if (parameter is ListView)
+                {
+                    var temp = (parameter as ListView).ItemTemplate;
+                    (parameter as ListView).ItemTemplate = null;
+                    (parameter as ListView).ItemTemplate = temp;
+                }
+
+            }
+
         }
     }
 }

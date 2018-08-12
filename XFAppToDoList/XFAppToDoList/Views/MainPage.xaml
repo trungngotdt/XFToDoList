@@ -67,47 +67,81 @@
                     HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
 
-       
+
+        <Grid AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
+              AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional">
             <ListView x:Name="LsvToDo" 
-                      AbsoluteLayout.LayoutBounds="0,0.5,1,0.8"
-                    AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional"
                       HasUnevenRows="True"
                       ItemsSource="{Binding ListToDo}" >
                 <ListView.Behaviors>
+                    <i:EventToCommandBehavior EventName="SizeChanged"
+                                              Command="{Binding CommandLsvToDoSizeChanged}"
+                                              CommandParameter="{x:Reference LsvToDo}"/>
+
                     <i:EventToCommandBehavior EventName="ItemTapped"
-                                              Command="{Binding CommandItemPressed}"
-                                              CommandParameter="{x:Reference LsvToDo} "/>
+                                          Command="{Binding CommandItemPressed}"
+                                          CommandParameter="{x:Reference LsvToDo}"/>
+
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell >
-                            <StackLayout x:Name="StLItem"
-                                         HeightRequest="30"
-                                         Orientation="Horizontal">
-
+                        <ViewCell>
+                            <FlexLayout x:Name="FLItem" JustifyContent="SpaceAround" AlignContent="SpaceBetween"
+                                        Direction="Row">
                                 <Label Text="{Binding Title}"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"/>
-                                <!-- <Label Text="{Binding Detail}"
+                                           IsEnabled="False"
+                                           FlexLayout.Basis="25%"
+                                           VerticalOptions="CenterAndExpand">
+                                    <Label.HorizontalOptions>
+                                        <OnPlatform x:TypeArguments="LayoutOptions">
+                                            <On Platform="WPF" Value="StartAndExpand"/>
+                                            <On Platform="UWP ,Android ,iOS" Value="CenterAndExpand"/>
+                                        </OnPlatform>
+                                    </Label.HorizontalOptions>
+                                </Label>
+
+                                <Label Text="{Binding Date}"
+                                           IsEnabled="False"
+                                           HorizontalTextAlignment="Center"
+                                           FlexLayout.Basis="50%"
+                                           FlexLayout.AlignSelf="Center"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand">
+                                </Label>
+
+
+                                <Grid FlexLayout.AlignSelf="End"
+                                      FlexLayout.Basis="25%">
+                                    <custom:ToggleButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
+                                                         WidthRequest="{Binding Source={x:Reference FLItem},Path=Height}"
+                                                         HeightRequest="{Binding Source={x:Reference FLItem},Path=Height}"
+                                                         Icon="https://png.icons8.com/ios/15/000000/checkmark.png"
+                                                         Checked="{Binding Available}"
+                                                         Margin="0,0,20,0" 
+                                                         HorizontalOptions="EndAndExpand"
+                                                         FillColorCheck="DeepSkyBlue"
+                                                         FillColorUnCheck="White"/>
+                                </Grid>
+                                
+
+
+                            </FlexLayout>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage> 
+    <!-- <Label Text="{Binding Detail}"
                                        IsVisible="False"                                       
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"/>
                                 -->
-                               
-                                <Label Text="{Binding Date}"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"/>
 
 
-                                <custom:ToggleButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
-                                                     WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
-                                                     HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"
-                                                     Icon="https://png.icons8.com/ios/15/000000/checkmark.png"
-                                                     Checked="{Binding Available}"
-                                                     Margin="0,0,20,0"
-                                                     FillColorCheck="DeepSkyBlue"
-                                                     FillColorUnCheck="White"/>
-                                <!--
+                                        <!--
                                 <flex:FlexButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
                                                  WidthRequest="{Binding Source={x:Reference StLItem},Path=Height}"
                                                  HeightRequest="{Binding Source={x:Reference StLItem},Path=Height}"
@@ -123,13 +157,3 @@
                                                  BorderColor="White"
                                                  HighlightBorderColor="White"/>
                                 -->
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        
-    </AbsoluteLayout>
-    
-    
-</ContentPage>
