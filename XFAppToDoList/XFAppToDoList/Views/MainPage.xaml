@@ -89,7 +89,9 @@
                             <FlexLayout x:Name="FLItem" JustifyContent="SpaceAround" AlignContent="SpaceBetween"
                                         Direction="Row">
                                 <Label Text="{Binding Title}"
-                                           IsEnabled="False"
+                                       TextColor="Black"
+                                       IsEnabled="False"
+                                       FontSize="Medium"
                                            FlexLayout.Basis="25%"
                                            VerticalOptions="CenterAndExpand">
                                     <Label.HorizontalOptions>
@@ -101,6 +103,8 @@
                                 </Label>
 
                                 <Label Text="{Binding Date}"
+                                       TextColor="Black" 
+                                       FontSize="Medium"
                                            IsEnabled="False"
                                            HorizontalTextAlignment="Center"
                                            FlexLayout.Basis="50%"

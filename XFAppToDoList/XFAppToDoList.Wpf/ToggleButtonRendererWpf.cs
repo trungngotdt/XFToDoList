@@ -65,7 +65,7 @@ namespace XFAppToDoList.Wpf
         {
             Control.Style = Element.Style == null ? (Style)Application.Current.Resources["MaterialDesignFloatingActionAccentButton"] :null;
         }
-
+        
         void UpdateColor()
         {
             Control.Background = ((Xamarin.Forms.Color)Element.GetType().GetProperty("FillColor" + (Element.Checked ? "" : "Un") + "Check").GetValue(Element)).ToBrush();

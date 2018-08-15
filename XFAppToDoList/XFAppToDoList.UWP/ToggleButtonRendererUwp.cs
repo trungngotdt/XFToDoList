@@ -63,5 +63,7 @@ namespace XFAppToDoList.UWP
                 "</ControlTemplate>";
             Control.Template = (ControlTemplate)Windows.UI.Xaml.Markup.XamlReader.Load(template);
         }
+
+        
     }
 }
