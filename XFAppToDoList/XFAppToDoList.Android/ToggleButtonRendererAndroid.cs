@@ -18,11 +18,12 @@ using System.ComponentModel;
 using Android.Graphics;
 using CToggleButton = XFAppToDoList.CustomControl.ToggleButton;
 using Android.Graphics.Drawables;
+using System.Net;
 
 [assembly: ExportRenderer(typeof(XFAppToDoList.CustomControl.ToggleButton), typeof(ToggleButtonRendererAndroid))]
 namespace XFAppToDoList.Droid
 {
-    public class ToggleButtonRendererAndroid:ViewRenderer<CToggleButton, ButtonRenderer>
+    public class ToggleButtonRendererAndroid:ViewRenderer<CToggleButton,FrameLayout>
     {
         private GradientDrawable _gradientBackground;
 
@@ -51,24 +52,41 @@ namespace XFAppToDoList.Droid
             {
                 if (Control == null)
                 {
+                    FrameLayout frame = new FrameLayout(Context);
                     ButtonRenderer button = new ButtonRenderer();
+                    Paint(frame);
+                    SetImageForFrame(frame, Element.Icon);
+                    SetNativeControl(frame);
                     
-                    SetNativeControl(button);
-                    Paint(button);
                 }
             }
         }
-        private void Paint(ButtonRenderer view)
+
+        private void SetImageForFrame(FrameLayout frame,string url)
+        {
+            var image = new ImageView(Context);
+            image.SetImageBitmap(GetImageBitmapFromUrl(url));
+            image.SetScaleType(ImageView.ScaleType.Center);
+            var linear = new LinearLayout(Context);
+            linear.SetHorizontalGravity(GravityFlags.CenterHorizontal);
+            linear.SetVerticalGravity(GravityFlags.CenterVertical);
+            linear.AddView(image);
+            FrameLayout.LayoutParams layout = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.FillParent, FrameLayout.LayoutParams.FillParent);
+            frame.AddView(linear, layout);
+
+        }
+
+        private void Paint(FrameLayout view)
         {
             _gradientBackground = new GradientDrawable();
-            _gradientBackground.SetShape(ShapeType.Rectangle);
+            _gradientBackground.SetShape(ShapeType.Oval);
             _gradientBackground.SetColor(Android.Graphics.Color.Bisque);
             // Thickness of the stroke line  
             _gradientBackground.SetStroke(1, Android.Graphics.Color.Red);
             // Radius for the curves  
             _gradientBackground.SetCornerRadius(20);
             // set the background of the label  
-            Control.SetBackground(_gradientBackground);
+            view.SetBackground(_gradientBackground);
         }
 
 
@@ -84,6 +102,22 @@ namespace XFAppToDoList.Droid
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
+        }
+
+        private Bitmap GetImageBitmapFromUrl(string url)
+        {
+            Bitmap imageBitmap = null;
+
+            using (var webClient = new WebClient())
+            {
+                var imageBytes = webClient.DownloadData(url);
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                }
+            }
+
+            return imageBitmap;
         }
 
         /*
