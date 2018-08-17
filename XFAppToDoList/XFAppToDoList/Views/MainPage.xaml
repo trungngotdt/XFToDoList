@@ -86,11 +86,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <FlexLayout x:Name="FLItem" JustifyContent="SpaceAround" AlignContent="SpaceBetween"
+                            <!--
+                              <FlexLayout x:Name="FLItem" JustifyContent="SpaceAround" AlignContent="SpaceBetween"
                                         Direction="Row">
                                 <Label Text="{Binding Title}"
-                                       TextColor="Black"
-                                       IsEnabled="False"
+                                       TextColor="Black" 
+                                       IsEnabled="False" FlexLayout.Order="-1" BackgroundColor="Red"
                                        FontSize="Medium"
                                            FlexLayout.Basis="25%"
                                            VerticalOptions="CenterAndExpand">
@@ -101,11 +102,12 @@
                                         </OnPlatform>
                                     </Label.HorizontalOptions>
                                 </Label>
+                                
 
                                 <Label Text="{Binding Date}"
                                        TextColor="Black" 
                                        FontSize="Medium"
-                                           IsEnabled="False"
+                                       IsEnabled="False" FlexLayout.Order="0"
                                            HorizontalTextAlignment="Center"
                                            FlexLayout.Basis="50%"
                                            FlexLayout.AlignSelf="Center"
@@ -114,7 +116,7 @@
                                 </Label>
 
 
-                                <Grid FlexLayout.AlignSelf="End"
+                                <Grid FlexLayout.Order="1" BackgroundColor="Blue"
                                       FlexLayout.Basis="25%">
                                     <custom:ToggleButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
                                                          WidthRequest="{Binding Source={x:Reference FLItem},Path=Height}"
@@ -125,11 +127,46 @@
                                                          HorizontalOptions="EndAndExpand"
                                                          FillColorCheck="DeepSkyBlue"
                                                          FillColorUnCheck="White"/>
-                                </Grid>
-                                
 
-
+                                </Grid>                                
                             </FlexLayout>
+                            -->
+
+                            <StackLayout Orientation="Horizontal" x:Name="SLItem">
+                                <Label Text="{Binding Title}"
+                                       TextColor="Black" 
+                                       IsEnabled="False" 
+                                       BackgroundColor="Red"
+                                       FontSize="Medium"
+                                       LineBreakMode="NoWrap"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand">
+                                </Label>
+
+
+                                <Label Text="{Binding Date}"
+                                       TextColor="Black" 
+                                       FontSize="Medium"
+                                       IsEnabled="False"
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand">
+                                </Label>
+
+
+                                
+                                    <custom:ToggleButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
+                                                         WidthRequest="{Binding Source={x:Reference SLItem},Path=Height}"
+                                                         HeightRequest="{Binding Source={x:Reference SLItem},Path=Height}"
+                                                         Icon="https://png.icons8.com/ios/15/000000/checkmark.png"
+                                                         Checked="{Binding Available}"
+                                                         Margin="0,0,20,0" 
+                                                         FillColorCheck="DeepSkyBlue"
+                                                         FillColorUnCheck="White"/>
+
+                             
+                                
+                            </StackLayout>
                             
                         </ViewCell>
                     </DataTemplate>

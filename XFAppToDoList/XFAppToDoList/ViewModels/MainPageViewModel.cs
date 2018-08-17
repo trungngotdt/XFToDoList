@@ -76,7 +76,7 @@ namespace XFAppToDoList.ViewModels
         }
 
         public DelegateCommand<object> CommandItemPressed =>
-            commandItemPressed ?? (commandItemPressed = new DelegateCommand<object>(ExecuteCommandItemPressedAsync));
+            commandItemPressed ?? (commandItemPressed = new DelegateCommand<object>(async(o)=> { await ExecuteCommandItemPressedAsync(o); }));
 
         public string GetTitle { get => title; set => title = value; }
 
@@ -154,7 +154,7 @@ namespace XFAppToDoList.ViewModels
             }
         }
 
-        async void ExecuteCommandItemPressedAsync(object element)
+        async Task ExecuteCommandItemPressedAsync(object element)
         {
             var item = (element as ListView).SelectedItem as Jobs;
             if (IsDeleteMode)

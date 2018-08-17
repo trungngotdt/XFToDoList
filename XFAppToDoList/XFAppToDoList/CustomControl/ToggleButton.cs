@@ -91,7 +91,7 @@ namespace XFAppToDoList.CustomControl
                         Checked = true;
                     }
                     await this.ScaleTo(0.8, 50, Easing.Linear);
-                    await System.Threading.Tasks.Task.Delay(1000);
+                    await System.Threading.Tasks.Task.Delay(500);
                     await this.ScaleTo(1, 50, Easing.Linear);
                     if (Command != null)
                     {

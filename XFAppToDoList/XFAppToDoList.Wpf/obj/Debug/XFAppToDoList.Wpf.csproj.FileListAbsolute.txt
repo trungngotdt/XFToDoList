@@ -1,9 +1,3 @@
-C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.csprojAssemblyReference.cache
-C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.exe.config
-C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\MainWindow.g.cs
-C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\App.g.cs
-C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf_MarkupCompile.cache
-C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf_MarkupCompile.lref
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\XFAppToDoList.Wpf.exe.config
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\XFAppToDoList.Wpf.exe
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\XFAppToDoList.Wpf.pdb
@@ -135,6 +129,12 @@ C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\De
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\Xamarin.Forms.Platform.WPF.pdb
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.exe.config
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\MainWindow.g.cs
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\App.g.cs
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf_MarkupCompile.cache
+C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf_MarkupCompile.lref
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\App.baml
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\MainWindow.baml
 C:\Users\Admin\source\repos\XFAppToDoList\XFAppToDoList\XFAppToDoList.Wpf\obj\Debug\XFAppToDoList.Wpf.g.resources

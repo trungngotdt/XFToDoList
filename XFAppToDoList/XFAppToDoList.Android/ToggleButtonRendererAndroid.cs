@@ -17,70 +17,57 @@ using XFAppToDoList.CustomControl;
 using System.ComponentModel;
 using Android.Graphics;
 using CToggleButton = XFAppToDoList.CustomControl.ToggleButton;
+using ALinearLayout = Android.Widget.LinearLayout;
 using Android.Graphics.Drawables;
 using System.Net;
 
 [assembly: ExportRenderer(typeof(XFAppToDoList.CustomControl.ToggleButton), typeof(ToggleButtonRendererAndroid))]
 namespace XFAppToDoList.Droid
 {
-    public class ToggleButtonRendererAndroid:ViewRenderer<CToggleButton,FrameLayout>
+    public class ToggleButtonRendererAndroid:ViewRenderer<CToggleButton,ALinearLayout>
     {
         private GradientDrawable _gradientBackground;
+        private ALinearLayout frame;
+        bool _isDisposed;
 
-        public ToggleButtonRendererAndroid() : base()
+        public ToggleButtonRendererAndroid() 
         {
 
         }
-
-        public ToggleButtonRendererAndroid(Context context) : base(context)
-        {
-
-        }
-
+        
         protected override void OnElementChanged(ElementChangedEventArgs<CToggleButton> e)
         {
             base.OnElementChanged(e);
-            if (e.OldElement == null)
+            if (e.OldElement == null&& (int)Android.OS.Build.VERSION.SdkInt < 21)
             {
-                //Only enable hardware accelleration on lollipop
-                if ((int)Android.OS.Build.VERSION.SdkInt < 21)
-                {
                     SetLayerType(LayerType.Software, null);
-                }
+                
             }
-            if (e.NewElement != null)
+            if (e.NewElement != null&&Control == null)
             {
-                if (Control == null)
-                {
-                    FrameLayout frame = new FrameLayout(Context);
-                    ButtonRenderer button = new ButtonRenderer();
+                    frame = new ALinearLayout(Context);
                     Paint(frame);
                     SetImageForFrame(frame, Element.Icon);
                     SetNativeControl(frame);
-                    
-                }
             }
         }
 
-        private void SetImageForFrame(FrameLayout frame,string url)
+        private void SetImageForFrame(ALinearLayout linear,string url)
         {
             var image = new ImageView(Context);
             image.SetImageBitmap(GetImageBitmapFromUrl(url));
             image.SetScaleType(ImageView.ScaleType.Center);
-            var linear = new LinearLayout(Context);
             linear.SetHorizontalGravity(GravityFlags.CenterHorizontal);
             linear.SetVerticalGravity(GravityFlags.CenterVertical);
             linear.AddView(image);
-            FrameLayout.LayoutParams layout = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.FillParent, FrameLayout.LayoutParams.FillParent);
-            frame.AddView(linear, layout);
 
         }
 
-        private void Paint(FrameLayout view)
+        private void Paint(ALinearLayout view)
         {
             _gradientBackground = new GradientDrawable();
             _gradientBackground.SetShape(ShapeType.Oval);
-            _gradientBackground.SetColor(Android.Graphics.Color.Bisque);
+            _gradientBackground.SetColor(((Xamarin.Forms.Color)Element.GetType().GetProperty("FillColor" + (Element.Checked ? "" : "Un") + "Check").GetValue(Element)).ToAndroid());
             // Thickness of the stroke line  
             _gradientBackground.SetStroke(1, Android.Graphics.Color.Red);
             // Radius for the curves  
@@ -93,9 +80,18 @@ namespace XFAppToDoList.Droid
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
+            System.Diagnostics.Debug.WriteLine(e.PropertyName);
             if (e.PropertyName ==CToggleButton.BackgroundColorProperty.PropertyName)
             {
                 this.Invalidate();
+            }
+            else if(e.PropertyName==CToggleButton.CheckedProperty.PropertyName)
+            {
+                UpdateColor();
+            }
+            else if(e.PropertyName==CToggleButton.IconProperty.PropertyName)
+            {
+                SetImageForFrame(frame, Element.Icon);
             }
         }
 
@@ -118,6 +114,28 @@ namespace XFAppToDoList.Droid
             }
 
             return imageBitmap;
+        }
+
+        private void UpdateColor()
+        {
+            var color = ((Xamarin.Forms.Color)Element.GetType().GetProperty("FillColor" + (Element.Checked ? "" : "Un") + "Check").GetValue(Element)).ToAndroid();
+            _gradientBackground.SetColor(color);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (_isDisposed)
+                return;
+
+            _isDisposed = true;
+
+            if (disposing)
+            {
+                _gradientBackground.Dispose();
+                _gradientBackground = null;
+            }
+
+            base.Dispose(disposing);
         }
 
         /*
