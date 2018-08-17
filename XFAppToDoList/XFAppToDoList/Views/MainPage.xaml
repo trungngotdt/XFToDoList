@@ -4,8 +4,7 @@
              x:Class="XFAppToDoList.Views.MainPage"
              xmlns:custom="clr-namespace:XFAppToDoList.CustomControl"
              xmlns:i="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-             Title="{Binding GetTitle}"
-             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
+             Title="{Binding GetTitle}">
     <AbsoluteLayout >
 
         <StackLayout Orientation="Horizontal" 
@@ -136,7 +135,6 @@
                                 <Label Text="{Binding Title}"
                                        TextColor="Black" 
                                        IsEnabled="False" 
-                                       BackgroundColor="Red"
                                        FontSize="Medium"
                                        LineBreakMode="NoWrap"
                                        HorizontalOptions="CenterAndExpand"

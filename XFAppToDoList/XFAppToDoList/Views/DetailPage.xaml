@@ -8,7 +8,6 @@
              Title="{Binding Title}">
     
     <StackLayout x:Name="StaLayMain"
-                 BackgroundColor="Red" 
                  Orientation="Vertical">
         
        
@@ -32,8 +31,7 @@
                
                 <Button.Behaviors>
                     <i:EventToCommandBehavior EventName="Clicked"
-                                              Command="{Binding CommandClickOk}"
-                                              CommandParameter="{x:Reference StaLayMain}">
+                                              Command="{Binding CommandClickOk}">
                     </i:EventToCommandBehavior>
                 </Button.Behaviors>
             </Button>

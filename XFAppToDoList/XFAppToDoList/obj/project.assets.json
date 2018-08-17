@@ -23,18 +23,6 @@
           "lib/netstandard1.0/DryIoc.dll": {}
         }
       },
-      "Forms.Controls.FlexButton/0.7.0": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
-        },
-        "compile": {
-          "lib/netstandard1.0/Flex.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/Flex.dll": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -426,21 +414,6 @@
         "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/DryIoc.dll",
         "lib/xamarinmac20/DryIoc.XML",
         "lib/xamarinmac20/DryIoc.dll"
-      ]
-    },
-    "Forms.Controls.FlexButton/0.7.0": {
-      "sha512": "B6IJ5+IDx6xXIDgU/TVYq80dzFwXerXSqfHXfWeoJJdg4wGlAPJf4wYTDFHOPO1o4Yt0+5cXHPAJuo7n9aaxkg==",
-      "type": "package",
-      "path": "forms.controls.flexbutton/0.7.0",
-      "files": [
-        "forms.controls.flexbutton.0.7.0.nupkg.sha512",
-        "forms.controls.flexbutton.nuspec",
-        "lib/monoandroid10/Flex.Android.dll",
-        "lib/monoandroid10/Flex.dll",
-        "lib/netstandard1.0/Flex.dll",
-        "lib/portable-win+net45+wp80+win81+wpa81/Flex.dll",
-        "lib/xamarinios10/Flex.dll",
-        "lib/xamarinios10/Flex.iOS.dll"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -2132,7 +2105,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Forms.Controls.FlexButton >= 0.7.0",
       "NETStandard.Library >= 2.0.3",
       "Prism.DryIoc.Forms >= 7.0.0.396",
       "Xamarin.Forms >= 3.1.0.583944"
@@ -2180,10 +2152,6 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "Forms.Controls.FlexButton": {
-            "target": "Package",
-            "version": "[0.7.0, )"
-          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",

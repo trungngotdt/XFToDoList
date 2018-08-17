@@ -50,6 +50,7 @@ namespace XFAppToDoList.Droid
                     SetImageForFrame(frame, Element.Icon);
                     SetNativeControl(frame);
             }
+            UpdateColor();
         }
 
         private void SetImageForFrame(ALinearLayout linear,string url)
@@ -121,6 +122,16 @@ namespace XFAppToDoList.Droid
             var color = ((Xamarin.Forms.Color)Element.GetType().GetProperty("FillColor" + (Element.Checked ? "" : "Un") + "Check").GetValue(Element)).ToAndroid();
             _gradientBackground.SetColor(color);
         }
+
+        private void UpdateAll()
+        {
+            
+            _gradientBackground = new GradientDrawable();
+            Paint(frame);
+            SetImageForFrame(frame, Element.Icon);
+            UpdateColor();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

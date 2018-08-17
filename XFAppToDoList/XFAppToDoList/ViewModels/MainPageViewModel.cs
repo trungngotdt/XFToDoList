@@ -12,11 +12,14 @@ using System.Text;
 using Xamarin.Forms;
 using XFAppToDoList.Models;
 using Prism.Services;
+using XFAppToDoList.MyUtilities;
+using XDependencyService = Xamarin.Forms.DependencyService;
 
 namespace XFAppToDoList.ViewModels
 {
     public class MainPageViewModel : ViewModelBase //ContentPage
     {
+        
         #region field
         private int countItemSelect;
 
@@ -90,6 +93,7 @@ namespace XFAppToDoList.ViewModels
 
         public bool IsCheckBtnDeleteAll { get => isCheckBtnDeleteAll;
             set {isCheckBtnDeleteAll = value;Debug.WriteLine("KKKKKKKK"); RaisePropertyChanged("IsCheckBtnDeleteAll"); } }
+
         #endregion
 
 
@@ -97,10 +101,10 @@ namespace XFAppToDoList.ViewModels
             : base(navigationService)
         {
             IsNormalMode = true;
-            
+            XDependencyService.Get<IDirectoryHelper>().CreateFolder("");
             getPageDialogService = pageDialogService;
             GetTitle = "Main Page";
-            
+           
             ListToDo.Add(new Jobs("Job a", "Job", true, DateTime.Now));
             ListToDo.Add(new Jobs("Job b", "Job", false, DateTime.Now));
             ListToDo.Add(new Jobs("Job c", "Job", false, DateTime.Now));

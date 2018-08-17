@@ -21,9 +21,9 @@ namespace XFAppToDoList.ViewModels
         private bool available;
         private int index;
 
-        private DelegateCommand<object> commandClickOk;
-        public DelegateCommand<object> CommandClickOk =>
-            commandClickOk ?? (commandClickOk = new DelegateCommand<object>((para) => { ExecuteCommandClickOkAsync(para); }));
+        private DelegateCommand commandClickOk;
+        public DelegateCommand CommandClickOk =>
+            commandClickOk ?? (commandClickOk = new DelegateCommand(() => { ExecuteCommandClickOkAsync(); }));
         private DelegateCommand commandCancel;
         public DelegateCommand CommandCancel =>
             commandCancel ?? (commandCancel = new DelegateCommand(ExecuteCommandCancel));
@@ -46,7 +46,7 @@ namespace XFAppToDoList.ViewModels
         public bool Available { get => available; set => available = value; }
         public string Action { get => action; set => action = value; }
 
-        async void ExecuteCommandClickOkAsync(object parameters)
+        async void ExecuteCommandClickOkAsync()
         {
             var jobEdit = new Jobs(TitleJobs, Detail, Available, new DateTime(Date.Year, Date.Month, Date.Day, Time.Hours, Time.Minutes, Time.Seconds, DateTimeKind.Local));
             var p = new NavigationParameters { {"action",Action },{"value","have" }, { "From", "DetailPage" }, { "id", index }, { "item", jobEdit } };
