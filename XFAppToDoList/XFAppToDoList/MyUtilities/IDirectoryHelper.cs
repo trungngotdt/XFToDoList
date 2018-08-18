@@ -9,7 +9,7 @@ namespace XFAppToDoList.MyUtilities
         bool CreateFolder(string address);
         bool CreateFile(string address);
         bool DeleteFile(string address);
-        bool WriteData(string address);
+        bool WriteData(string address,string data);
         string ReadData(string address);
     }
 }

@@ -101,10 +101,9 @@ namespace XFAppToDoList.ViewModels
             : base(navigationService)
         {
             IsNormalMode = true;
-            XDependencyService.Get<IDirectoryHelper>().CreateFolder("");
+            XDependencyService.Get<IDirectoryHelper>().ReadData(@"yourfoldername/te.txt");
             getPageDialogService = pageDialogService;
-            GetTitle = "Main Page";
-           
+            GetTitle = "Main Page";           
             ListToDo.Add(new Jobs("Job a", "Job", true, DateTime.Now));
             ListToDo.Add(new Jobs("Job b", "Job", false, DateTime.Now));
             ListToDo.Add(new Jobs("Job c", "Job", false, DateTime.Now));

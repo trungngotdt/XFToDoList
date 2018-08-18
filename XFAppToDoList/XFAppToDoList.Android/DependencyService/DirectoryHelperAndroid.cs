@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using JFile = Java.IO.File;
 using XFAppToDoList.MyUtilities;
 using Xamarin.Forms;
 using XFAppToDoList.Droid.DependencyService;
@@ -21,36 +22,121 @@ namespace XFAppToDoList.Droid.DependencyService
     {
         public bool CreateFile(string address)
         {
-            throw new NotImplementedException();
+            try
+            {
+                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+                JFile file = new JFile(address);
+                if (!file.Exists())
+                {
+                    var result= file.CreateNewFile();
+                    file.Dispose();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return false;
         }
 
         public bool CreateFolder(string address)
         {
-            var s= Android.OS.Environment.DataDirectory.ToPath().ToString();
-            string documentBasePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            DirectoryInfo directory = new DirectoryInfo(documentBasePath);
-            foreach (DirectoryInfo dir in directory.GetDirectories())
+            try
             {
-                
-                //dir.Delete(true);
+                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+                JFile file = new JFile(address);
+                if (!file.Exists())
+                {
+                    var result= file.Mkdir();
+                    file.Dispose();
+                    return result;
+                }
             }
-            //Android.OS.Environment..GetFolderPath(Android.OS.Environment.SpecialFolder.Personal)
-            throw new NotImplementedException();
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+            return false;
         }
 
         public bool DeleteFile(string address)
         {
-            throw new NotImplementedException();
+            try
+            {
+                JFile file = new JFile(address);
+                if (file.Exists())
+                {
+                    var result= file.Delete();
+                    file.Dispose();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return false;
+            //throw new NotImplementedException();
         }
 
         public string ReadData(string address)
         {
-            throw new NotImplementedException();
+            try
+            {
+                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+
+                JFile file = new JFile(address);
+                if (file.IsFile && file.CanWrite())
+                {
+                    Java.IO.BufferedReader br = new Java.IO.BufferedReader(new Java.IO.FileReader(file));
+                    StringBuilder str=new StringBuilder();
+                    string temp="";
+                    while ((temp=br.ReadLine() )!= null)
+                    {
+                        str.Append(temp);
+                    }
+                    br.Dispose();
+                    return str.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return null;
+            //throw new NotImplementedException();
         }
 
-        public bool WriteData(string address)
+        public bool WriteData(string address, string data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+                JFile file = new JFile(address);
+                if (file.IsFile&&file.CanWrite())
+                {
+                    Java.IO.FileWriter writer = new Java.IO.FileWriter(file);
+                    writer.Write(data);
+                    writer.Flush();
+                    writer.Close();
+                    writer.Dispose();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return false;
+            //throw new NotImplementedException();
         }
     }
 }
