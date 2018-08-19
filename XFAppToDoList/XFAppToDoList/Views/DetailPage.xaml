@@ -8,8 +8,7 @@
              Title="{Binding Title}">
     
     <StackLayout x:Name="StaLayMain"
-                 Orientation="Vertical">
-        
+                 Orientation="Vertical">       
        
         <Entry x:Name="EntTitle"
                Text="{Binding TitleJobs}"/>

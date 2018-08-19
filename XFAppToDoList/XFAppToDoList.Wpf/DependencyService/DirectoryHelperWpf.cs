@@ -1,23 +1,23 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XFAppToDoList.MyUtilities;
-using XFAppToDoList.UWP.DependencyService;
+using XFAppToDoList.Wpf.DependencyService;
 
-[assembly: Dependency(typeof(DirectoryHelperUWP))]
-namespace XFAppToDoList.UWP.DependencyService
+[assembly: Dependency(typeof(DirectoryHelperWpf))]
+namespace XFAppToDoList.Wpf.DependencyService
 {
-    public class DirectoryHelperUWP : IDirectoryHelper
+    public class DirectoryHelperWpf : IDirectoryHelper
     {
         public bool CreateFile(string address, EFolders eFolders)
         {
             try
             {
-                address = CombineFolderPath(address,eFolders);
+                address = CombineFolderPath(address, eFolders);
                 if (!File.Exists(address))
                 {
                     File.Create(address);
@@ -38,12 +38,12 @@ namespace XFAppToDoList.UWP.DependencyService
         {
             try
             {
-                var dir= CombineFolderPath(address,eFolders);
+                var dir = CombineFolderPath(address, eFolders);
                 if (!Directory.Exists(dir))
                 {
                     DirectoryInfo directory = new DirectoryInfo(dir);
                     directory.Create();
-                    
+
                     return directory.Exists;
                 }
             }
@@ -61,7 +61,7 @@ namespace XFAppToDoList.UWP.DependencyService
         {
             try
             {
-                address = CombineFolderPath(address,eFolders);
+                address = CombineFolderPath(address, eFolders);
                 if (!File.Exists(address))
                 {
                     File.Delete(address);
@@ -81,7 +81,7 @@ namespace XFAppToDoList.UWP.DependencyService
         {
             try
             {
-                address = CombineFolderPath(address,eFolders);
+                address = CombineFolderPath(address, eFolders);
                 if (!File.Exists(address))
                 {
                     string text = File.ReadAllText(address);
@@ -101,8 +101,8 @@ namespace XFAppToDoList.UWP.DependencyService
         {
             try
             {
-                address = CombineFolderPath(address,eFolders);
-                if(File.Exists(address))
+                address = CombineFolderPath(address, eFolders);
+                if (File.Exists(address))
                 {
                     File.WriteAllText(address, data);
                     return true;
@@ -117,10 +117,9 @@ namespace XFAppToDoList.UWP.DependencyService
             //throw new NotImplementedException();
         }
 
-        public string CombineFolderPath(string address,EFolders eFolders)
+        public string CombineFolderPath(string address, EFolders eFolders)
         {
-            //return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),eFolders==0?"":eFolders.ToString(), address);
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), eFolders == 0 ? String.Empty : eFolders.ToString(), address);
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), eFolders == 0 ? String.Empty : eFolders.ToString(), address);
         }
     }
 }

@@ -91,7 +91,7 @@ namespace XFAppToDoList.Models
 
         public override string ToString()
         {
-            return "Title : "+this.Title+ "Detail : "+this.Detail+"Status : "+this.Available+"Time : "+this.Date.ToString();
+            return "Title : "+this.Title+ " Detail : "+this.Detail+" Status : "+this.Available+" Time : "+this.Date.ToString();
         }
     }
 }

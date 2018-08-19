@@ -20,7 +20,7 @@
                              IsVisible="{Binding IsDeleteMode}"
                              HeightRequest="40"
                              WidthRequest="40"
-                             Checked="{Binding IsCheckBtnDeleteAll}"
+                             Checked="{Binding IsCheckBtnDeleteAll,Mode=TwoWay}"
                              Margin="0,0,20,0"
                              Icon="https://png.icons8.com/ios/20/000000/checkmark.png"
                              FillColorCheck="DeepSkyBlue"
@@ -150,20 +150,16 @@
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand">
                                 </Label>
-
-
-                                
-                                    <custom:ToggleButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
+                                <custom:ToggleButton IsVisible="{Binding Source={x:Reference LsvToDo} ,Path=BindingContext.IsDeleteMode}"
                                                          WidthRequest="{Binding Source={x:Reference SLItem},Path=Height}"
                                                          HeightRequest="{Binding Source={x:Reference SLItem},Path=Height}"
                                                          Icon="https://png.icons8.com/ios/15/000000/checkmark.png"
-                                                         Checked="{Binding Available}"
-                                                         Margin="0,0,20,0" 
+                                                         Checked="{Binding Available,Mode=TwoWay}"
+                                                         Margin="0,0,20,0"
+                                                         Command="{Binding Source={x:Reference LsvToDo},Path=BindingContext.CommandToggleButtonPress}"
+                                                         CommandParameter="{Binding .}"
                                                          FillColorCheck="DeepSkyBlue"
                                                          FillColorUnCheck="White"/>
-
-                             
-                                
                             </StackLayout>
                             
                         </ViewCell>

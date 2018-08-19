@@ -32,8 +32,9 @@ namespace XFAppToDoList.ViewModels
         private bool isCheckBtnDeleteAll;
         private DelegateCommand commandBtnDeleteSelectPress;
         private  DelegateCommand<Element> commandLsvToDoSizeChanged;
-       
 
+        private DelegateCommand<object> commandToggleButtonPress;
+       
        
 
         
@@ -42,13 +43,17 @@ namespace XFAppToDoList.ViewModels
         private DelegateCommand<object> commandItemPressed;
         private DelegateCommand<ListView> commandClickBtnAbout;
         private DelegateCommand commandAddJob;
+       
         private ObservableCollection<Jobs> listToDo;
         
         #endregion
 
 
         #region Property
+        public DelegateCommand<object> CommandToggleButtonPress =>
+            commandToggleButtonPress ?? (commandToggleButtonPress = new DelegateCommand<object>(ExecuteCommandToggleButtonPress));
 
+       
         public DelegateCommand<Element> CommandLsvToDoSizeChanged =>
             commandLsvToDoSizeChanged ?? (commandLsvToDoSizeChanged = new DelegateCommand<Element>(ExecuteCommandLsvToDoSizeChanged));
 
@@ -92,7 +97,14 @@ namespace XFAppToDoList.ViewModels
         public bool IsNormalMode { get => isNormalMode; set { isNormalMode = value; RaisePropertyChanged("IsNormalMode"); } }
 
         public bool IsCheckBtnDeleteAll { get => isCheckBtnDeleteAll;
-            set {isCheckBtnDeleteAll = value;Debug.WriteLine("KKKKKKKK"); RaisePropertyChanged("IsCheckBtnDeleteAll"); } }
+            set
+            {
+                isCheckBtnDeleteAll = value;
+                Parallel.ForEach(ListToDo, (item) => { item.Available = value; });
+                countItemSelect = value ? listToDo.Count : 0;
+                RaisePropertyChanged("IsCheckBtnDeleteAll");
+            }
+        }
 
         #endregion
 
@@ -101,7 +113,7 @@ namespace XFAppToDoList.ViewModels
             : base(navigationService)
         {
             IsNormalMode = true;
-            XDependencyService.Get<IDirectoryHelper>().ReadData(@"yourfoldername/te.txt");
+            //XDependencyService.Get<IDirectoryHelper>().CreateFolder(@"yourfoldername");
             getPageDialogService = pageDialogService;
             GetTitle = "Main Page";           
             ListToDo.Add(new Jobs("Job a", "Job", true, DateTime.Now));
@@ -116,8 +128,10 @@ namespace XFAppToDoList.ViewModels
             {
                 ListToDo.Add(new Jobs($"Job {i}", "Job", false, DateTime.Now));
             }
+            countItemSelect= ListToDo.Count(item =>  item.Available);
         }
-        
+       
+
         /// <summary>
         /// Change Delete mode to Normal mode or Normal mode to Delete mode
         /// </summary>
@@ -125,6 +139,12 @@ namespace XFAppToDoList.ViewModels
         {
             IsDeleteMode = !IsDeleteMode;
             IsNormalMode = !IsNormalMode;
+        }
+
+        void ExecuteCommandToggleButtonPress(object obj)
+        {
+            var item = obj as Jobs;
+            countItemSelect = (item.Available) ? countItemSelect + 1 : countItemSelect - 1;
         }
 
         async Task ExecuteCommandPopUpAsync(ListView listView)
@@ -237,6 +257,10 @@ namespace XFAppToDoList.ViewModels
             }
         }
 
+        /// <summary>
+        /// Only apply for Wpf
+        /// </summary>
+        /// <param name="parameter"></param>
         void ExecuteCommandLsvToDoSizeChanged(Element parameter)
         {
 

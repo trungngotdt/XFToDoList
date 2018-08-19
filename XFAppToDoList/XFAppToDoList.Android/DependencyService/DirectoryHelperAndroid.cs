@@ -20,11 +20,18 @@ namespace XFAppToDoList.Droid.DependencyService
 {
     public class DirectoryHelperAndroid : IDirectoryHelper
     {
-        public bool CreateFile(string address)
+        public string CombineFolderPath(string address, EFolders eFolders)
+        {
+            string checkFolder = (eFolders == 0 ? String.Empty : (JFile.Separator + eFolders.ToString()));
+            return Android.OS.Environment.ExternalStorageDirectory + JFile.Separator+ checkFolder+ address ;
+            //throw new NotImplementedException();
+        }
+
+        public bool CreateFile(string address, EFolders eFolders)
         {
             try
             {
-                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+                address = CombineFolderPath(address,eFolders);
                 JFile file = new JFile(address);
                 if (!file.Exists())
                 {
@@ -42,11 +49,11 @@ namespace XFAppToDoList.Droid.DependencyService
             return false;
         }
 
-        public bool CreateFolder(string address)
+        public bool CreateFolder(string address, EFolders eFolders)
         {
             try
             {
-                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+                address = CombineFolderPath(address,eFolders);
                 JFile file = new JFile(address);
                 if (!file.Exists())
                 {
@@ -64,10 +71,11 @@ namespace XFAppToDoList.Droid.DependencyService
             return false;
         }
 
-        public bool DeleteFile(string address)
+        public bool DeleteFile(string address, EFolders eFolders)
         {
             try
             {
+                address= CombineFolderPath(address,eFolders);
                 JFile file = new JFile(address);
                 if (file.Exists())
                 {
@@ -85,11 +93,11 @@ namespace XFAppToDoList.Droid.DependencyService
             //throw new NotImplementedException();
         }
 
-        public string ReadData(string address)
+        public string ReadData(string address, EFolders eFolders)
         {
             try
             {
-                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+                address = CombineFolderPath(address,eFolders);
 
                 JFile file = new JFile(address);
                 if (file.IsFile && file.CanWrite())
@@ -114,11 +122,11 @@ namespace XFAppToDoList.Droid.DependencyService
             //throw new NotImplementedException();
         }
 
-        public bool WriteData(string address, string data)
+        public bool WriteData(string address, string data, EFolders eFolders)
         {
             try
             {
-                address = Android.OS.Environment.ExternalStorageDirectory + Java.IO.File.Separator + address;
+                address = CombineFolderPath(address,eFolders);
                 JFile file = new JFile(address);
                 if (file.IsFile&&file.CanWrite())
                 {

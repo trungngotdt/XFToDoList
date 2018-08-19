@@ -5,6 +5,8 @@ using XFAppToDoList.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.DryIoc;
+using XDependencyService = Xamarin.Forms.DependencyService;
+using XFAppToDoList.MyUtilities;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XFAppToDoList
@@ -24,6 +26,9 @@ namespace XFAppToDoList
         {
             InitializeComponent();
 
+            System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString(), EFolders.None));
+            System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString()+@"/"+EFolders.Data,EFolders.None));
+            System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString() + @"/"+ EFolders.Log,EFolders.None));
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
