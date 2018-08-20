@@ -37,6 +37,14 @@ namespace XFAppToDoList.CustomControl
                 declaringType: typeof(ToggleButton),
                 defaultValue: Color.Transparent);
 
+        public event EventHandler ChangeState;
+        public void SendChangeState()
+        {
+            if (IsEnabled )
+            {
+                ChangeState?.Invoke(this, EventArgs.Empty);
+            }
+        }
 
         public String Icon
         {
@@ -59,7 +67,7 @@ namespace XFAppToDoList.CustomControl
         public bool Checked
         {
             get { return (bool)GetValue(CheckedProperty); }
-            set { SetValue(CheckedProperty, value); }
+            set { SendChangeState();SetValue(CheckedProperty, value); }
         }
 
         public ICommand Command

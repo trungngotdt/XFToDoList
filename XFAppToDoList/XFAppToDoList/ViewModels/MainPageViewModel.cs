@@ -19,7 +19,6 @@ namespace XFAppToDoList.ViewModels
 {
     public class MainPageViewModel : ViewModelBase //ContentPage
     {
-        
         #region field
         private int countItemSelect;
 
@@ -43,13 +42,19 @@ namespace XFAppToDoList.ViewModels
         private DelegateCommand<object> commandItemPressed;
         private DelegateCommand<ListView> commandClickBtnAbout;
         private DelegateCommand commandAddJob;
-       
-        private ObservableCollection<Jobs> listToDo;
+        private DelegateCommand commandBtnDeleteAllChangeState;
         
+
+        
+
+        private ObservableCollection<Jobs> listToDo;
+
         #endregion
 
 
         #region Property
+        public DelegateCommand CommandBtnDeleteAllChangeState =>
+                    commandBtnDeleteAllChangeState ?? (commandBtnDeleteAllChangeState = new DelegateCommand(ExecuteCommandBtnDeleteAllChangeState));
         public DelegateCommand<object> CommandToggleButtonPress =>
             commandToggleButtonPress ?? (commandToggleButtonPress = new DelegateCommand<object>(ExecuteCommandToggleButtonPress));
 
@@ -100,8 +105,7 @@ namespace XFAppToDoList.ViewModels
             set
             {
                 isCheckBtnDeleteAll = value;
-                Parallel.ForEach(ListToDo, (item) => { item.Available = value; });
-                countItemSelect = value ? listToDo.Count : 0;
+                
                 RaisePropertyChanged("IsCheckBtnDeleteAll");
             }
         }
@@ -132,6 +136,9 @@ namespace XFAppToDoList.ViewModels
         }
        
 
+        
+
+        #region Helper
         /// <summary>
         /// Change Delete mode to Normal mode or Normal mode to Delete mode
         /// </summary>
@@ -141,10 +148,44 @@ namespace XFAppToDoList.ViewModels
             IsNormalMode = !IsNormalMode;
         }
 
+
+        void ToggleButtonChangeState(object obj)
+        {
+            var temp = countItemSelect;
+            var count = ListToDo.Count;
+            var item = obj as Jobs;
+            item.Available = !item.Available;
+            countItemSelect = (item.Available) ? countItemSelect + 1 : countItemSelect - 1;
+            if (countItemSelect == count || temp == count && countItemSelect < count)
+            {
+                IsCheckBtnDeleteAll = !IsCheckBtnDeleteAll;
+                //ExecuteCommandBtnDeleteAllChangeState();
+            }
+        }
+
+        #endregion
+
+        #region Command
+
+        void ExecuteCommandBtnDeleteAllChangeState()
+        {
+            var value = !IsCheckBtnDeleteAll;
+            Parallel.ForEach(ListToDo, (item) => { item.Available = value; });
+            countItemSelect = value ? listToDo.Count : 0;
+        }
+
         void ExecuteCommandToggleButtonPress(object obj)
         {
+            (obj as Jobs).Available = !(obj as Jobs).Available;
+            ToggleButtonChangeState(obj);
+            /*var temp = countItemSelect;
+            var count = ListToDo.Count;
             var item = obj as Jobs;
             countItemSelect = (item.Available) ? countItemSelect + 1 : countItemSelect - 1;
+            if(countItemSelect==count||temp==count&&countItemSelect<count)
+            {
+                ExecuteCommandBtnDeleteAllChangeState();
+            }*/
         }
 
         async Task ExecuteCommandPopUpAsync(ListView listView)
@@ -180,10 +221,12 @@ namespace XFAppToDoList.ViewModels
         async Task ExecuteCommandItemPressedAsync(object element)
         {
             var item = (element as ListView).SelectedItem as Jobs;
+            //item.Available = !item.Available;
             if (IsDeleteMode)
             {
-                item.Available = !item.Available;
-                countItemSelect = (item.Available) ? countItemSelect + 1 : countItemSelect - 1;
+                ToggleButtonChangeState(item);
+                /*item.Available = !item.Available;
+                countItemSelect = (item.Available) ? countItemSelect + 1 : countItemSelect - 1;*/
             }
             else
             {
@@ -221,6 +264,26 @@ namespace XFAppToDoList.ViewModels
             NavigationService.NavigateAsync("DetailPage", new NavigationParameters { { "action", "insert" } });
         }
 
+        /// <summary>
+        /// Only apply for Wpf
+        /// </summary>
+        /// <param name="parameter"></param>
+        void ExecuteCommandLsvToDoSizeChanged(Element parameter)
+        {
+
+            if(Device.RuntimePlatform.Equals(Device.WPF))
+            {
+                if (parameter is ListView)
+                {
+                    var temp = (parameter as ListView).ItemTemplate;
+                    (parameter as ListView).ItemTemplate = null;
+                    (parameter as ListView).ItemTemplate = temp;
+                }
+
+            }
+
+        }
+        #endregion
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.Count != 0)
@@ -257,24 +320,6 @@ namespace XFAppToDoList.ViewModels
             }
         }
 
-        /// <summary>
-        /// Only apply for Wpf
-        /// </summary>
-        /// <param name="parameter"></param>
-        void ExecuteCommandLsvToDoSizeChanged(Element parameter)
-        {
-
-            if(Device.RuntimePlatform.Equals(Device.WPF))
-            {
-                if (parameter is ListView)
-                {
-                    var temp = (parameter as ListView).ItemTemplate;
-                    (parameter as ListView).ItemTemplate = null;
-                    (parameter as ListView).ItemTemplate = temp;
-                }
-
-            }
-
-        }
+       
     }
 }

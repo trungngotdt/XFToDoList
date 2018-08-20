@@ -17,16 +17,22 @@
                    HorizontalOptions="StartAndExpand"
                    IsVisible="{Binding IsDeleteMode}"/>
             <custom:ToggleButton x:Name="BtnDeleteAll"                                 
-                             IsVisible="{Binding IsDeleteMode}"
-                             HeightRequest="40"
-                             WidthRequest="40"
-                             Checked="{Binding IsCheckBtnDeleteAll,Mode=TwoWay}"
-                             Margin="0,0,20,0"
-                             Icon="https://png.icons8.com/ios/20/000000/checkmark.png"
-                             FillColorCheck="DeepSkyBlue"
-                             FillColorUnCheck="White"
-                             VerticalOptions="CenterAndExpand"
-                             HorizontalOptions="EndAndExpand"/>
+                                 IsVisible="{Binding IsDeleteMode}"
+                                 HeightRequest="40"
+                                 WidthRequest="40"
+                                 Checked="{Binding IsCheckBtnDeleteAll,Mode=TwoWay}"
+                                 Margin="0,0,20,0"
+                                 
+                                 Icon="https://png.icons8.com/ios/20/000000/checkmark.png"
+                                 FillColorCheck="DeepSkyBlue"
+                                 FillColorUnCheck="White"
+                                 VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="EndAndExpand">
+                <custom:ToggleButton.Behaviors>
+                    <i:EventToCommandBehavior EventName="ChangeState"
+                                              Command="{Binding CommandBtnDeleteAllChangeState}"/>
+                </custom:ToggleButton.Behaviors>
+            </custom:ToggleButton>
 
         </StackLayout>
         <StackLayout x:Name="ScLFooter"

@@ -26,9 +26,9 @@ namespace XFAppToDoList
         {
             InitializeComponent();
 
-            System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString(), EFolders.None));
-            System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString()+@"/"+EFolders.Data,EFolders.None));
-            System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString() + @"/"+ EFolders.Log,EFolders.None));
+            //System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString(), EFolders.None));
+            //System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString()+@"/"+EFolders.Data,EFolders.None));
+            //System.Diagnostics.Debug.WriteLine(XDependencyService.Get<IDirectoryHelper>().CreateFolder(Application.Current.ToString() + @"/"+ EFolders.Log,EFolders.None));
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 

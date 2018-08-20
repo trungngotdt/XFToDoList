@@ -28,7 +28,15 @@ namespace XFAppToDoList.Wpf
                 if (Control == null)
                 {
                     Button button = new Button();
-                    button.Click += (sender,re)=>{ Element.Checked = !Element.Checked;Element.Command.Execute(Element.CommandParameter); };
+                    button.Click += (sender,re)=>
+                    {
+                        Element.Checked = !Element.Checked;
+                        if(Element.Command!=null)
+                        {
+                            Element.Command.Execute(Element.CommandParameter);
+                        }
+                        
+                    };
                     SetNativeControl(button);
                 }
                 UpdateStyle();
