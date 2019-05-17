@@ -20,10 +20,23 @@ namespace XFAppToDoList.Droid.DependencyService
 {
     public class DirectoryHelperAndroid : IDirectoryHelper
     {
+        public string GetDBAddress(string dbName)
+        {
+            var folder = Android.OS.Environment.ExternalStorageDirectory + JFile.Separator + EFolders.Data;
+            var file = new JFile(folder);
+            if (!file.Exists())
+            {
+                file.Mkdir();
+                file.Dispose();
+            }
+            return CombineFolderPath(dbName, EFolders.Data);
+        }
+
+
         public string CombineFolderPath(string address, EFolders eFolders)
         {
             string checkFolder = (eFolders == 0 ? String.Empty : (JFile.Separator + eFolders.ToString()));
-            return Android.OS.Environment.ExternalStorageDirectory + JFile.Separator+ checkFolder+ address ;
+            return Android.OS.Environment.ExternalStorageDirectory + JFile.Separator+ checkFolder + JFile.Separator + address ;
             //throw new NotImplementedException();
         }
 

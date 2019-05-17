@@ -14,6 +14,7 @@ using XFAppToDoList.Models;
 using Prism.Services;
 using XFAppToDoList.MyUtilities;
 using XDependencyService = Xamarin.Forms.DependencyService;
+using LiteDB;
 
 namespace XFAppToDoList.ViewModels
 {
@@ -22,7 +23,7 @@ namespace XFAppToDoList.ViewModels
         #region field
         private int countItemSelect;
 
-        
+
         private IPageDialogService getPageDialogService;
         private string title;
         private bool isDeleteMode;
@@ -30,22 +31,22 @@ namespace XFAppToDoList.ViewModels
         private bool isNormalMode;
         private bool isCheckBtnDeleteAll;
         private DelegateCommand commandBtnDeleteSelectPress;
-        private  DelegateCommand<Element> commandLsvToDoSizeChanged;
+        private DelegateCommand<Element> commandLsvToDoSizeChanged;
 
         private DelegateCommand<object> commandToggleButtonPress;
-       
-       
 
-        
+
+
+
         private DelegateCommand commandBtnCancelPress;
         private DelegateCommand commandBtnChoicePressed;
         private DelegateCommand<object> commandItemPressed;
         private DelegateCommand<ListView> commandClickBtnAbout;
         private DelegateCommand commandAddJob;
         private DelegateCommand commandBtnDeleteAllChangeState;
-        
 
-        
+
+
 
         private ObservableCollection<Jobs> listToDo;
 
@@ -58,7 +59,7 @@ namespace XFAppToDoList.ViewModels
         public DelegateCommand<object> CommandToggleButtonPress =>
             commandToggleButtonPress ?? (commandToggleButtonPress = new DelegateCommand<object>(ExecuteCommandToggleButtonPress));
 
-       
+
         public DelegateCommand<Element> CommandLsvToDoSizeChanged =>
             commandLsvToDoSizeChanged ?? (commandLsvToDoSizeChanged = new DelegateCommand<Element>(ExecuteCommandLsvToDoSizeChanged));
 
@@ -75,21 +76,21 @@ namespace XFAppToDoList.ViewModels
             commandBtnCancelPress ?? (commandBtnCancelPress = new DelegateCommand(ExecuteCommandBtnCancelPress));
 
         public DelegateCommand CommandBtnDeleteSelectPress =>
-             commandBtnDeleteSelectPress ?? ( commandBtnDeleteSelectPress = new DelegateCommand(ExecuteCommandBtnDeleteSelectPress));
+             commandBtnDeleteSelectPress ?? (commandBtnDeleteSelectPress = new DelegateCommand(ExecuteCommandBtnDeleteSelectPress));
 
         public ObservableCollection<Jobs> ListToDo
         {
             get
             {
                 listToDo = listToDo ?? new ObservableCollection<Jobs>();
-               
+
                 return listToDo;
             }
             set => listToDo = value;
         }
 
         public DelegateCommand<object> CommandItemPressed =>
-            commandItemPressed ?? (commandItemPressed = new DelegateCommand<object>(async(o)=> { await ExecuteCommandItemPressedAsync(o); }));
+            commandItemPressed ?? (commandItemPressed = new DelegateCommand<object>(async (o) => { await ExecuteCommandItemPressedAsync(o); }));
 
         public string GetTitle { get => title; set => title = value; }
 
@@ -97,15 +98,17 @@ namespace XFAppToDoList.ViewModels
 
         public bool IsDeleteMode { get => isDeleteMode; set { isDeleteMode = value; RaisePropertyChanged("IsDeleteMode"); } }
 
-        public bool IsEnableBtnDeleteSelect { get => isEnableBtnDeleteSelect; set {isEnableBtnDeleteSelect = value; RaisePropertyChanged("IsEnableBtnDeleteSelect"); } }
+        public bool IsEnableBtnDeleteSelect { get => isEnableBtnDeleteSelect; set { isEnableBtnDeleteSelect = value; RaisePropertyChanged("IsEnableBtnDeleteSelect"); } }
 
         public bool IsNormalMode { get => isNormalMode; set { isNormalMode = value; RaisePropertyChanged("IsNormalMode"); } }
 
-        public bool IsCheckBtnDeleteAll { get => isCheckBtnDeleteAll;
+        public bool IsCheckBtnDeleteAll
+        {
+            get => isCheckBtnDeleteAll;
             set
             {
                 isCheckBtnDeleteAll = value;
-                
+
                 RaisePropertyChanged("IsCheckBtnDeleteAll");
             }
         }
@@ -119,24 +122,14 @@ namespace XFAppToDoList.ViewModels
             IsNormalMode = true;
             //XDependencyService.Get<IDirectoryHelper>().CreateFolder(@"yourfoldername");
             getPageDialogService = pageDialogService;
-            GetTitle = "Main Page";           
-            ListToDo.Add(new Jobs("Job a", "Job", true, DateTime.Now));
-            ListToDo.Add(new Jobs("Job b", "Job", false, DateTime.Now));
-            ListToDo.Add(new Jobs("Job c", "Job", false, DateTime.Now));
-            ListToDo.Add(new Jobs("Job d", "Job", false, DateTime.Now));
-            ListToDo.Add(new Jobs("Job e", "Job", false, DateTime.Now));
-            ListToDo.Add(new Jobs("Job f", "Job", false, DateTime.Now));
-            ListToDo.Add(new Jobs("Job g", "Job", false, DateTime.Now));
-            ListToDo.Add(new Jobs("Job h", "Job", false, DateTime.Now));
-            for (int i = 0; i < 50; i++)
-            {
-                ListToDo.Add(new Jobs($"Job {i}", "Job", false, DateTime.Now));
-            }
-            countItemSelect= ListToDo.Count(item =>  item.Available);
+            GetTitle = "Main Page";
+            LoadDB();
+           
+            countItemSelect = ListToDo.Count(item => item.Available);
         }
-       
 
-        
+
+
 
         #region Helper
         /// <summary>
@@ -161,6 +154,25 @@ namespace XFAppToDoList.ViewModels
                 IsCheckBtnDeleteAll = !IsCheckBtnDeleteAll;
                 //ExecuteCommandBtnDeleteAllChangeState();
             }
+        }
+
+        void LoadDB()
+        {
+            try
+            {
+                var strConn = Xamarin.Forms.DependencyService.Get<IDirectoryHelper>().GetDBAddress("data.db");
+                using (var db = new LiteDatabase(strConn))
+                {
+                    var jobs = db.GetCollection<Jobs>();
+                    ListToDo = new ObservableCollection<Jobs>(jobs.FindAll());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
         }
 
         #endregion
@@ -199,23 +211,32 @@ namespace XFAppToDoList.ViewModels
 
         void ExecuteCommandBtnDeleteSelectPress()
         {
-            if(IsCheckBtnDeleteAll)
+            var strConn = Xamarin.Forms.DependencyService.Get<IDirectoryHelper>().GetDBAddress("data.db");
+            using (var db = new LiteDatabase(strConn))
             {
-                ListToDo.Clear();
-            }
-            else
-            {
-                var count = ListToDo.ToList().Count;
-                for (int i = 0; i < count; i++)
+                var jobCol = db.GetCollection<Jobs>();
+                if (IsCheckBtnDeleteAll)
                 {
-                    if(ListToDo[i].Available)
+                    ListToDo.Clear();
+                    jobCol.Delete(x => x != null);
+                }
+                else
+                {
+                    var count = ListToDo.ToList().Count;
+                    for (int i = 0; i < count; i++)
                     {
-                        ListToDo.RemoveAt(i);
-                        i--;
-                        count--;
+                        if (ListToDo[i].Available)
+                        {
+                            jobCol.Delete(x => x.Id == listToDo.ElementAt(i).Id);
+                            ListToDo.RemoveAt(i);
+
+                            i--;
+                            count--;
+                        }
                     }
                 }
             }
+
         }
 
         async Task ExecuteCommandItemPressedAsync(object element)
@@ -271,7 +292,7 @@ namespace XFAppToDoList.ViewModels
         void ExecuteCommandLsvToDoSizeChanged(Element parameter)
         {
 
-            if(Device.RuntimePlatform.Equals(Device.WPF))
+            if (Device.RuntimePlatform.Equals(Device.WPF))
             {
                 if (parameter is ListView)
                 {
@@ -290,25 +311,33 @@ namespace XFAppToDoList.ViewModels
             {
                 try
                 {
+                    var strConn = Xamarin.Forms.DependencyService.Get<IDirectoryHelper>().GetDBAddress("data.db");
                     if (parameters.GetValue<string>("From").Equals("DetailPage"))
                     {
-                        var index = (int)parameters["id"];
-                        var item = parameters["item"] as Jobs;
-                        if (parameters["action"].ToString().Equals("update"))
+                        using (var db = new LiteDatabase(strConn))
                         {
-                            if (!ListToDo[index].Equals(item))
+                            var jobCol = db.GetCollection<Jobs>();
+                            var index = (int)parameters["id"];
+                            var item = parameters["item"] as Jobs;
+                            if (parameters["action"].ToString().Equals("update"))
                             {
-                                var temp = ListToDo[index];
-                                var getAllProperties = item.GetType().GetProperties();
-                                foreach (var property in getAllProperties)
+                                if (!ListToDo[index].Equals(item))
                                 {
-                                    temp.GetType().GetProperty(property.Name).SetValue(temp, property.GetValue(item, null));
+                                    var temp = ListToDo[index];
+                                    var getAllProperties = item.GetType().GetProperties();
+                                    var job = jobCol.Find(x => x.Id == item.Id).FirstOrDefault();
+                                    foreach (var property in getAllProperties)
+                                    {
+                                        temp.GetType().GetProperty(property.Name).SetValue(temp, property.GetValue(item, null));
+                                        job.GetType().GetProperty(property.Name).SetValue(job, property.GetValue(item, null));
+                                    }
                                 }
                             }
-                        }
-                        else if (parameters["action"].ToString().Equals("insert"))
-                        {
-                            ListToDo.Add(item);
+                            else if (parameters["action"].ToString().Equals("insert"))
+                            {
+                                jobCol.Insert(item);
+                                ListToDo.Add(item);
+                            }
                         }
                     }
                 }
@@ -320,6 +349,6 @@ namespace XFAppToDoList.ViewModels
             }
         }
 
-       
+
     }
 }

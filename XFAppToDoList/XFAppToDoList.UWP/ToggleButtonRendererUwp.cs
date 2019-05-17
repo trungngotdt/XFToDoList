@@ -9,6 +9,7 @@ using XFAppToDoList.UWP;
 using Windows.UI.Xaml.Controls;
 using System.ComponentModel;
 using System.Diagnostics;
+using Windows.UI.Xaml.Shapes;
 
 [assembly: ExportRenderer(typeof(ToggleButton), typeof(ToggleButtonRendererUwp))]
 namespace XFAppToDoList.UWP
@@ -23,6 +24,11 @@ namespace XFAppToDoList.UWP
             {
                 if (Control == null)
                 {
+                    Grid grid = new Grid();
+                    var e1 = new Ellipse();
+                    var e2 = new Ellipse();
+                    grid.Children.Add(e1);
+                    grid.Children.Add(e2);
                     FormsButton button = new FormsButton();
                     SetNativeControl(button);
                 }

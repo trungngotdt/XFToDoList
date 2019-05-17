@@ -13,6 +13,17 @@ namespace XFAppToDoList.Wpf.DependencyService
 {
     public class DirectoryHelperWpf : IDirectoryHelper
     {
+        public string GetDBAddress(string dbName)
+        {
+            var path=  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), EFolders.Data.ToString());
+            if (!Directory.Exists( path))
+            {
+                DirectoryInfo directory = new DirectoryInfo(path);
+                directory.Create();
+            }
+            return CombineFolderPath(dbName, EFolders.Data);
+        }
+
         public bool CreateFile(string address, EFolders eFolders)
         {
             try

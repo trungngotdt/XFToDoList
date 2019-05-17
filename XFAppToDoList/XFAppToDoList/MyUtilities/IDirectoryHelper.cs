@@ -43,5 +43,12 @@ namespace XFAppToDoList.MyUtilities
         /// <param name="address"></param>
         /// <returns></returns>
         string CombineFolderPath(string address, EFolders eFolders);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbName"></param>
+        /// <returns></returns>
+        string GetDBAddress(string dbName);
     }
 }

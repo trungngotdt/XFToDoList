@@ -3,6 +3,5 @@
   <PropertyGroup>
     <SelectedDevice>android_api27</SelectedDevice>
     <DefaultDevice>android_api27</DefaultDevice>
-    <AndroidDesignerPreferredTheme>Theme.DeviceDefault.NoActionBar.Fullscreen</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

@@ -7,6 +7,7 @@ namespace XFAppToDoList.Models
 {
     public class Jobs: INotifyPropertyChanged
     {
+        private int id; 
         private string title;
         private string detail;
         private bool available;
@@ -52,6 +53,8 @@ namespace XFAppToDoList.Models
 
             }
         }
+
+        public int Id { get => id; set => id = value; }
 
         public Jobs()
         {

@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using XFAppToDoList.Models;
 using System.Globalization;
+using LiteDB;
+using XFAppToDoList.MyUtilities;
 
 namespace XFAppToDoList.ViewModels
 {
@@ -48,8 +50,9 @@ namespace XFAppToDoList.ViewModels
 
         async void ExecuteCommandClickOkAsync()
         {
-            var jobEdit = new Jobs(TitleJobs, Detail, Available, new DateTime(Date.Year, Date.Month, Date.Day, Time.Hours, Time.Minutes, Time.Seconds, DateTimeKind.Local));
-            var p = new NavigationParameters { {"action",Action },{"value","have" }, { "From", "DetailPage" }, { "id", index }, { "item", jobEdit } };
+            var newJob = new Jobs(TitleJobs, Detail, Available, new DateTime(Date.Year, Date.Month, Date.Day, Time.Hours, Time.Minutes, Time.Seconds, DateTimeKind.Local));
+            
+            var p = new NavigationParameters { {"action",Action },{"value","have" }, { "From", "DetailPage" }, { "id", index }, { "item", newJob } };
             await NavigationService.GoBackAsync(p);
         }
 
@@ -59,6 +62,7 @@ namespace XFAppToDoList.ViewModels
             if (Action.Equals("update"))
             {
                 var job = parameters["SelectedItem"] as Jobs;
+
                 index = (int)parameters["id"];
                 TitleJobs = job.Title;
                 Date = job.Date.Date;
@@ -69,7 +73,7 @@ namespace XFAppToDoList.ViewModels
                 RaisePropertyChanged("TitleJobs");
                 RaisePropertyChanged("Time");
             }
-
+            
         }
     }
 }

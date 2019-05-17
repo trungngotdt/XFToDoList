@@ -138,6 +138,7 @@
                             -->
 
                             <StackLayout Orientation="Horizontal" x:Name="SLItem">
+                                
                                 <Label Text="{Binding Title}"
                                        TextColor="Black" 
                                        IsEnabled="False" 
